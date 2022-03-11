@@ -1,12 +1,20 @@
 <ng-container>
-    <p>page-content works!</p>
-    <section>
-        <h1>IT news</h1>
-        <ng-image-slider [images]="imgCollection" #nav></ng-image-slider>
-    </section>
-    <section>
-        <h1>Sport news</h1>
-        <ng-image-slider [images]="imgCollection" #nav></ng-image-slider>
-    </section>
+    <div class="container">
+        <div class="row">
+            <section>
+                <h1>Most fire news!</h1>
+                <carousel>
+                    <slide *ngFor="let img of imgCollection; let index=index">
+                        <div class="slide">
+                            <img [src]="img.image" alt="image slide" style="width: 100%;">
+                                <div class="carousel-caption">
+                                    <p>{{img.title}}</p>
+                                </div>
+                        </div>
+                    </slide>
+                </carousel>
+            </section>
+        </div>
+    </div>
 </ng-container>
 
