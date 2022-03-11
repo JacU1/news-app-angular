@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {IMG_COLLECTION} from './page-content.model';
+import { NewsApiService } from 'src/app/services/news-api.service';
+import { SliderObject } from './page-content.model';
 
 @Component({
   selector: 'app-page-content',
@@ -7,10 +8,12 @@ import {IMG_COLLECTION} from './page-content.model';
   styleUrls: ['./page-content.component.sass']
 })
 export class PageContentComponent implements OnInit {
+  imgCollection: Array<SliderObject> = [];
 
-  constructor() { }
+  constructor(private newsAPI: NewsApiService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.imgCollection = this.newsAPI.getNews("Apple");
+    console.log(this.imgCollection);
   }
-  imgCollection = IMG_COLLECTION;
 }
