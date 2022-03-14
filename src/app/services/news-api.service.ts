@@ -17,7 +17,11 @@ export class NewsApiService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getNews(type: string | null){
+  public get(url: string, options?: any) {
+    return this.httpClient.get(url, options);
+  }
+
+  public getNews(type: string | null, url: string = "", options?: any){
      this.httpClient.get<NewsApiResponse>(`${this.newsUrl}${type}${this.API_KEY}`).subscribe(res => {
        res.articles.forEach(val => {
          this.responseArr.push({
