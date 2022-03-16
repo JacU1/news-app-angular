@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
@@ -11,14 +10,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { FirstRowNewsComponent } from './components/first-row-news/first-row-news.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
     MainPageComponent,
     PageContentComponent,
     PageSidebarComponent,
-    FirstRowNewsComponent
+    FirstRowNewsComponent,
   ],
   imports: [
     BrowserModule,
