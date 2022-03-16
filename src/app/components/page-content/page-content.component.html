@@ -6,10 +6,12 @@
                 <carousel>
                     <slide *ngFor="let img of imgCollection; let index=index">
                         <div class="slide">
-                            <img [src]="img.image" alt="image slide" style="width: 100%;">
-                                <div class="carousel-caption">
-                                    <p>{{img.title}}</p>
-                                </div>
+                            <figure style="width: 100%; min-width: 1140px;">
+                                <img [src]="img.image" alt="image slide" style="width: 100%; height: auto;">
+                            </figure>
+                        <div class="carousel-caption">
+                            <p>{{img.title}}</p>
+                        </div>
                         </div>
                     </slide>
                 </carousel>

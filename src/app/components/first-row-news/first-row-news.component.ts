@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { map } from 'rxjs';
+import { TOP_ENDPOINT } from 'src/app/config/constants';
 import { NewsApiService } from 'src/app/services/news-api.service';
-import { SliderObject } from '../page-content/page-content.model';
 
 @Component({
   selector: 'app-first-row-news',
@@ -9,12 +10,17 @@ import { SliderObject } from '../page-content/page-content.model';
 })
 export class FirstRowNewsComponent implements OnInit {
   
-  image: string = "";
+  infoObject: any;
 
   constructor(private newsAPI: NewsApiService) { }
 
   ngOnInit(): void {
-    this.image = "https://s.yimg.com/os/creatr-uploaded-images/2022-02/ca82d5a0-9496-11ec-a3ff-ff7415fb976b";
+    this.newsAPI.getNews("Tesla", TOP_ENDPOINT).subscribe(res => {
+      this.infoObject = res[0];
+    })
   }
+
+
+
 
 }
