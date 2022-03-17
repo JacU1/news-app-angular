@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { FirstRowNewsComponent } from './components/first-row-news/first-row-news.component';
+import { PageCarouselComponent } from './components/page-carousel/page-carousel.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { FirstRowNewsComponent } from './components/first-row-news/first-row-new
     PageContentComponent,
     PageSidebarComponent,
     FirstRowNewsComponent,
+    PageCarouselComponent,
   ],
   imports: [
     BrowserModule,
