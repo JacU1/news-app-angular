@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NewsApiService } from 'src/app/services/news-api.service';
-import { TOP_ENDPOINT } from 'src/app/config/constants';
+import { EVERYTHING_ENDPOINT, TOP_ENDPOINT } from 'src/app/config/constants';
 import { SliderObject } from '../page-carousel/page-carousel.model';
+import { ArticlesObject } from 'src/app/services/news-api-model';
 
 @Component({
   selector: 'app-page-content',
@@ -10,11 +11,14 @@ import { SliderObject } from '../page-carousel/page-carousel.model';
 })
 export class PageContentComponent implements OnInit {
   newsArray: Array<SliderObject> = [];
+  mainContent?: ArticlesObject;
 
   constructor(private newsAPI: NewsApiService) { }
 
   ngOnInit() {
     this.newsAPI.getNews("Apple", TOP_ENDPOINT).subscribe(res => {
+      this.mainContent = res[0];
+
       res.map(item => {
         this.newsArray.push({
           image: item.urlToImage,

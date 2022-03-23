@@ -18,8 +18,5 @@ export class NewsApiService {
         map(res => {
           return res.articles
         })
-      )
- }
-
-
+      )}
 }
