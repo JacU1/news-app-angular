@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NewsApiService } from 'src/app/services/news-api.service';
 import { EVERYTHING_ENDPOINT, TOP_ENDPOINT } from 'src/app/config/constants';
 import { SliderObject } from '../page-carousel/page-carousel.model';
-import { ArticlesObject } from 'src/app/services/news-api-model';
+import { ArticlesObject } from 'src/app/components/shared/services/news-API/news-api-model';
 
 @Component({
   selector: 'app-page-content',

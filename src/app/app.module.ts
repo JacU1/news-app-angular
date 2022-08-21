@@ -12,6 +12,11 @@ import { PageCarouselComponent } from './components/page-carousel/page-carousel.
 import { PageLeftsideInfoComponent } from './components/page-content/page-leftside-info/page-leftside-info.component';
 import { PageRightsideInfoComponent } from './components/page-content/page-rightside-info/page-rightside-info.component';
 import { PageCenterInfoComponent } from './components/page-content/page-center-info/page-center-info.component';
+import { HomeComponent } from './views/home/home.component';
+import { ArticleComponent } from './views/article/article.component';
+import { NavbarComponent } from './core/components/navbar/navbar.component';
+import { FooterComponent } from './core/components/footer/footer.component';
+import { PageNotFoundComponent } from './views/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +28,11 @@ import { PageCenterInfoComponent } from './components/page-content/page-center-i
     PageLeftsideInfoComponent,
     PageRightsideInfoComponent,
     PageCenterInfoComponent,
+    HomeComponent,
+    ArticleComponent,
+    NavbarComponent,
+    FooterComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ArticlesObject } from 'src/app/services/news-api-model';
+import { ArticlesObject } from 'src/app/components/shared/services/news-API/news-api-model';
 
 @Component({
   selector: 'app-page-center-info',
