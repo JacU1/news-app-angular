@@ -1,8 +1,8 @@
+import { ArticlesObject , NewsApiResponse } from './news-api-model';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
-import { ArticlesObject, NewsApiResponse } from '../services/news-api-model';
-import { API_KEY, API_URL } from '../config/constants';
+import { API_KEY, API_URL } from 'src/app/core/config/constants';
 
 @Injectable({
   providedIn: 'root'

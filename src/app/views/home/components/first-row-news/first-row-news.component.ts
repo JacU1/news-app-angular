@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs';
-import { TOP_ENDPOINT, EVERYTHING_ENDPOINT } from 'src/app/config/constants';
-import { NewsApiService } from 'src/app/services/news-api.service';
+import { TOP_ENDPOINT, EVERYTHING_ENDPOINT } from 'src/app/core/config/constants';
+import { NewsApiService } from 'src/app/components/shared/services/news-API/news-api.service';
 
 @Component({
   selector: 'app-first-row-news',
@@ -15,7 +15,7 @@ export class FirstRowNewsComponent implements OnInit {
   constructor(private newsAPI: NewsApiService) {}
 
   ngOnInit(): void {
-    this.newsAPI.getNews("Tesla", EVERYTHING_ENDPOINT).subscribe(res => {
+    this.newsAPI.getNews("Tesla", EVERYTHING_ENDPOINT).subscribe((res: any[]) => {
       this.infoObject = res[5];
     })
   }
