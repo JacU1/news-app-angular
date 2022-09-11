@@ -1,16 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { SliderObject } from './page-carousel.model';
+import { SliderObject } from 'src/app/core/models/page-carousel.model';
 
 @Component({
   selector: 'app-page-carousel',
   templateUrl: './page-carousel.component.html',
   styleUrls: ['./page-carousel.component.sass']
 })
-export class PageCarouselComponent implements OnInit {
-  @Input() imgArray: Array<SliderObject> = [] 
+export class PageCarouselComponent {
+  @Input() imgArray: SliderObject[]  = [];
 
   constructor() { }
-
-  ngOnInit() {
-  }
 }

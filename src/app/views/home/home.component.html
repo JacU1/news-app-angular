@@ -1,14 +1,19 @@
-<app-navbar></app-navbar>
+<app-layout>
 
 <ng-container>
-    <div class="container">
-        <div class="row">
-          <div class="imgHost">
-            <img [src]="mainContent?.urlToImage" class="img-responsive" alt="main-image">
-            <p class="imgText">{{mainContent?.title}}</p>
-          </div>
-        </div>
-      </div>
+
+  <app-main-news 
+  [newsItem] = ""
+  ></app-main-news>
+
 </ng-container>
 
-<app-page-carousel [imgArray] = "newsArray"></app-page-carousel>
+<ng-container>
+
+  <app-page-carousel 
+  [imgArray] = "carouselNewsArray"
+  ></app-page-carousel>
+
+</ng-container>
+
+</app-layout>

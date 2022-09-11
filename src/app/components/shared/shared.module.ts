@@ -1,22 +1,10 @@
-import { NewsApiService } from './services/news-API/news-api.service';
-import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CarouselModule } from 'ngx-bootstrap/carousel';
-import { AppRoutingModule } from 'src/app/app-routing.module';
-
+import { NewsApiService } from './services/news-API/news-api.service';
 @NgModule({
   declarations: [
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    CarouselModule.forRoot()
-  ],
-  providers: []
-//   bootstrap: [HomeComponent]
+  imports: [],
+  exports: [],
+  providers: [NewsApiService]
 })
 export class SharedModule { }

@@ -3,10 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { API_KEY, API_URL } from 'src/app/core/config/constants';
-
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 
 export class NewsApiService {
 
