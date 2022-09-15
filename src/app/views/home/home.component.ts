@@ -1,3 +1,4 @@
+import { NewsApiService } from 'src/app/components/shared/services/news-API/news-api.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,9 +9,8 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
   carouselNewsArray: Array<any> = [];
 
-  constructor() { }
+  constructor(private readonly newsService: NewsApiService) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
 }
