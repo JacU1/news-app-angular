@@ -5,17 +5,23 @@ import { SharedModule } from 'src/app/components/shared/shared.module';
 import { HomeComponent } from './home.component';
 import { PageCarouselComponent } from './components/dumb_components/page-carousel/page-carousel.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+import {CommonModule} from "@angular/common";
+import {HomeRoutingModule} from "./home-routing.module";
 
 @NgModule({
   declarations: [
+    HomeComponent,
     MainNewsComponent,
     PageCarouselComponent,
   ],
   imports: [
+    CommonModule,
+    HomeRoutingModule,
+    CarouselModule,
     SharedModule,
     CoreModule,
   ],
-  exports: [MainNewsComponent, PageCarouselComponent],
+  exports: [],
   providers: [],
   bootstrap: [HomeComponent]
 })

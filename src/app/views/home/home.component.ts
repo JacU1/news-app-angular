@@ -9,8 +9,10 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
   carouselNewsArray: Array<any> = [];
 
-  constructor(private readonly newsService: NewsApiService) { }
+  constructor() { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log("Component loaded");
+  }
 
 }
