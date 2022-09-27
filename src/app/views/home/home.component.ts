@@ -1,3 +1,4 @@
+import { NewsApiService } from 'src/app/components/shared/services/news-API/news-api.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -11,6 +12,7 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log("Component loaded");
   }
 
 }

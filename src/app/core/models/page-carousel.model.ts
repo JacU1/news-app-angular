@@ -1,4 +1,4 @@
-export interface SliderObject {
+export interface SliderImage {
     image: string,
     thumbImage: string,
     alt:string,
