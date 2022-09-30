@@ -9,11 +9,9 @@ export class NewsApiService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public getNews(topic?: string, type?: string, options?: any) : Observable<ArticlesObject[]>{
+  public getNews(type: string, topic: string) : Observable<ArticlesObject[]>{
     return this.httpClient.get<NewsApiResponse>(`${API_URL}${type}?q=${topic}&apiKey=${API_KEY}`)
       .pipe(
-        map(res => {
-          return res.articles
-        })
+        map(res => {return res.articles})
       )}
 }

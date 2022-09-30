@@ -1,4 +1,4 @@
-import { CoreModule } from './../../core/core.module';
+import { CoreModule } from '../../core/core.module';
 import { MainNewsComponent } from './components/dumb_components/main-news/main-news.component';
 import { NgModule } from '@angular/core';
 import { SharedModule } from 'src/app/components/shared/shared.module';
@@ -7,6 +7,7 @@ import { PageCarouselComponent } from './components/dumb_components/page-carouse
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import {CommonModule} from "@angular/common";
 import {HomeRoutingModule} from "./home-routing.module";
+import {NewsApiService} from "../../components/shared/services/news-API/news-api.service";
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import {HomeRoutingModule} from "./home-routing.module";
     CoreModule,
   ],
   exports: [],
-  providers: [],
+  providers: [NewsApiService],
   bootstrap: [HomeComponent]
 })
 export class HomeModule { }
