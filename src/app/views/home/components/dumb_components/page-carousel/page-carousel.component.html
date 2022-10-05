@@ -1,20 +1,15 @@
-<ng-container>
-    <div class="container">
-        <div class="row">
-                <h1>Most fire news!</h1>
-                <carousel>
-                    <slide *ngFor="let img of sliderImages; let index=index">
-                        <div class="slide">
-                            <figure style="width: 100%; min-width: 1140px;">
-                                <img [src]="img.image" alt="image slide" style="width: 100%; height: auto;">
-                            </figure>
-                        <div class="carousel-caption">
-                            <p>{{img.title}}</p>
-                        </div>
-                        </div>
-                    </slide>
-                </carousel>
+  <ng-container class="carousel">
+    <carousel>
+      <slide *ngFor="let news of sliderNews">
+        <div class="carousel__slide">
+          <figure>
+            <img [src]="news.image" alt="news_slide">
+          </figure>
         </div>
-    </div>
-</ng-container>
+        <div class="carousel-caption">
+          <p>{{news.title}}</p>
+        </div>
+      </slide>
+    </carousel>
+  </ng-container>
 

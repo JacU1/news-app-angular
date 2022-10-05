@@ -1,10 +1,9 @@
-
-  export interface NewsApiResponse {
+ export interface NewsApiResponse {
     articles: ArticlesObject[],
     status: string,
     totalResults: number
   }
-  
+
   export interface ArticlesObject {
     author: string,
     content: string,
@@ -18,4 +17,3 @@
     url:string,
     urlToImage: string
   }
-  
