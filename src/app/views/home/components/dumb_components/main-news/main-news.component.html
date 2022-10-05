@@ -1,12 +1,14 @@
 <ng-container>
-    <div class="container">
-        <div class="row">
-          <div class="col-sm-6">
-              <img [src]="newsItem?.urlToImage" class="img-responsive" alt="...">
-              <div class="overlay">
-                <p>{{newsItem?.title}}</p>
-            </div>
-          </div>
-        </div>
+  <div class="main-image">
+    <div class="main-image__image">
+      <div class="main-image__image-wrapper" style="height: inherit">
+        <img [src]="newsItem?.urlToImage" class="img-fluid" alt="main-img">
       </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+
+    </div>
+  </div>
 </ng-container>

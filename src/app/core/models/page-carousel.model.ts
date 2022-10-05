@@ -1,6 +1,4 @@
-export interface SliderImage {
+export interface ISliderNews {
     image: string,
-    thumbImage: string,
-    alt:string,
     title:string;
   }
