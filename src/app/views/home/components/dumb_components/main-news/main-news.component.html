@@ -1,14 +1,18 @@
 <ng-container>
-  <div class="main-image">
+  <div class="container-fluid">
     <div class="main-image__image">
       <div class="main-image__image-wrapper" style="height: inherit">
         <img [src]="newsItem?.urlToImage" class="img-fluid" alt="main-img">
       </div>
     </div>
   </div>
-  <div class="container">
+  <div class="container-fluid__small">
     <div class="row">
-
+        <div class="main-image__panel-item" *ngFor = 'let news of mainPanelNewsArray'>
+          <span>{{news.author}}</span>
+          <span>{{news.source.name}}</span>
+          <span>{{news.title}}</span>
+        </div>
     </div>
   </div>
 </ng-container>
