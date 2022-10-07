@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     this._unSubscription$.add(this.newsService.getEverythingNews( "apple")
       .subscribe(news => {
-        news.length = 4;
+        news.length = 5;
         this.mainPanelNews = news;
         console.log(this.mainPanelNews);
         news.forEach(item => {
