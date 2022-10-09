@@ -8,11 +8,13 @@
   </div>
   <div class="container-fluid__small">
     <div class="row">
+      <div class="main-image__news-row">
         <div class="main-image__panel-item" *ngFor = 'let news of mainPanelNewsArray'>
-          <span>{{news.author}}</span>
-          <span>{{news.source.name}}</span>
+          <span class="main-image__panel-item__source">{{news.source.name}}</span>
+          <span class="main-image__panel-item__author">{{news.author}}</span>
           <span>{{news.title}}</span>
         </div>
+      </div>
     </div>
   </div>
 </ng-container>
