@@ -1,10 +1,10 @@
- export interface NewsApiResponse {
-    articles: ArticlesObject[],
+ export interface INewsApiResponse {
+    articles: IArticle[],
     status: string,
     totalResults: number
   }
 
-  export interface ArticlesObject {
+  export interface IArticle {
     author: string,
     content: string,
     description: string,
