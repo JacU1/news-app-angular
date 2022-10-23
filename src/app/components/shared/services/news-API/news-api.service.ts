@@ -1,4 +1,4 @@
-import { ArticlesObject , NewsApiResponse } from './news-api-model';
+import { IArticle , INewsApiResponse } from './news-api-model';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {map, Observable, tap} from 'rxjs';
@@ -9,15 +9,15 @@ export class NewsApiService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public getEverythingNews(topic: string) : Observable<ArticlesObject[]> {
-    return this.httpClient.get<NewsApiResponse>(`${API_URL}everything?q=${topic}&apiKey=${API_KEY}`)
+  public getEverythingNews(topic: string) : Observable<IArticle[]> {
+    return this.httpClient.get<INewsApiResponse>(`${API_URL}everything?q=${topic}&apiKey=${API_KEY}`)
       .pipe(
         tap(res => console.log(res)),
         map(res => {return res.articles})
       )};
 
-  public getTopheadlinesNews(topic: string): Observable<ArticlesObject[]> {
-    return this.httpClient.get<NewsApiResponse>(`${API_URL}top-headlines?q=${topic}&apiKey=${API_KEY}`)
+  public getTopheadlinesNews(topic: string): Observable<IArticle[]> {
+    return this.httpClient.get<INewsApiResponse>(`${API_URL}top-headlines?q=${topic}&apiKey=${API_KEY}`)
       .pipe(
         map(res => {return res.articles})
       )};
