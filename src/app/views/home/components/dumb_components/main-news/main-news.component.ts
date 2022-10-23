@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import {ArticlesObject} from "../../../../../components/shared/services/news-API/news-api-model";
+import {IArticle} from "../../../../../components/shared/services/news-API/news-api-model";
 
 @Component({
   selector: 'app-main-news',
@@ -8,9 +8,9 @@ import {ArticlesObject} from "../../../../../components/shared/services/news-API
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MainNewsComponent implements OnChanges {
-  @Input() mainPanelNewsArray : ArticlesObject[] = [];
+  @Input() mainPanelNewsArray : IArticle[] = [];
 
-  public newsItem?: ArticlesObject;
+  public newsItem?: IArticle;
 
   constructor() {}
 

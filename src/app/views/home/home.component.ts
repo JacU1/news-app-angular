@@ -2,7 +2,7 @@ import { NewsApiService } from 'src/app/components/shared/services/news-API/news
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from "rxjs";
 import {ISliderNews} from "../../core/models/page-carousel.model";
-import {ArticlesObject} from "../../components/shared/services/news-API/news-api-model";
+import {IArticle} from "../../components/shared/services/news-API/news-api-model";
 
 @Component({
   selector: 'app-home',
@@ -12,7 +12,7 @@ import {ArticlesObject} from "../../components/shared/services/news-API/news-api
 export class HomeComponent implements OnInit, OnDestroy {
   private readonly _unSubscription$: Subscription = new Subscription();
   public carouselNewsArray: Array<ISliderNews> = [];
-  public mainPanelNews: ArticlesObject[] = [];
+  public mainPanelNews: IArticle[] = [];
 
   constructor(private readonly newsService: NewsApiService) { }
 
@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   private getNewsForHomePageContent(): void {
     const carouselImages: ISliderNews[] = [];
 
-    this._unSubscription$.add(this.newsService.getEverythingNews( "apple")
+    this._unSubscription$.add(this.newsService.getEverythingNews("apple")
       .subscribe(news => {
         news.length = 4;
         this.mainPanelNews = news;
