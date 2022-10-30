@@ -1,11 +1,13 @@
-import { IArticle } from "src/app/components/shared/services/news-API/news-api-model";
+export class NewsState {
+    private subscribers?: Function[];
+    private reducers?: {[key: string]: Function[]};
+    private state: {[key: string]: any};
 
-export interface INewsState {
-    articles: IArticle[] | null,
-    selectedArticle: IArticle | null
-}
+    constructor(reducers = {}, initialState = {}) {
+        this.state = initialState;
+    }
 
-export const initialState: INewsState = {
-    articles: null,
-    selectedArticle: null
+    get value() {
+        return this.state;
+    }
 }
