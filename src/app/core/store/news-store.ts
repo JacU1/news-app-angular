@@ -1,4 +1,4 @@
-export class NewsState {
+export class NewsStore {
     private subscribers?: Function[];
     private reducers?: {[key: string]: Function[]};
     private state: {[key: string]: any};
