@@ -22,7 +22,6 @@ import { StoreModule } from '@ngrx/store';
     CarouselModule,
     SharedModule,
     CoreModule,
-    StoreModule.forFeature('home', {})
   ],
   exports: [],
   providers: [NewsApiService],
