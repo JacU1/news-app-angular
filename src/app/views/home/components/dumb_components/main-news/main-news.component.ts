@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import {IArticle} from "../../../../../components/shared/services/news-API/news-api-model";
+import {IArticle} from "../../../../../core/models/news-api-model";
 
 @Component({
   selector: 'app-main-news',
