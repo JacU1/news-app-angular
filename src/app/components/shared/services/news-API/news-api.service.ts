@@ -1,4 +1,4 @@
-import { IArticle , INewsApiResponse } from './news-api-model';
+import { IArticle , INewsApiResponse } from '../../../../core/models/news-api-model';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {map, Observable, tap} from 'rxjs';

@@ -2,7 +2,7 @@ import { NewsApiService } from 'src/app/components/shared/services/news-API/news
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from "rxjs";
 import {ISliderNews} from "../../core/models/page-carousel.model";
-import {IArticle} from "../../components/shared/services/news-API/news-api-model";
+import {IArticle} from "../../core/models/news-api-model";
 
 @Component({
   selector: 'app-home',

@@ -8,6 +8,7 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
 import {CommonModule} from "@angular/common";
 import {HomeRoutingModule} from "./home-routing.module";
 import {NewsApiService} from "../../components/shared/services/news-API/news-api.service";
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
