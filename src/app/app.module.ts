@@ -8,6 +8,8 @@ import {LayoutModule} from "./core/components/layout/layout.module";
 import {HttpClientModule} from "@angular/common/http";
 import { StoreModule } from '@ngrx/store';
 import { newsReducer } from './core/store/reducers/news.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { NewsEffects } from './core/store/effects/news.effects';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { newsReducer } from './core/store/reducers/news.reducer';
     LayoutModule,
     SharedModule,
     CoreModule,
-    StoreModule.forRoot({news: newsReducer})
+    StoreModule.forRoot({news: newsReducer}),
+    EffectsModule.forRoot([NewsEffects]),
+    StoreModule.forRoot({}, {})
   ],
   providers: [],
   bootstrap: [AppComponent]
