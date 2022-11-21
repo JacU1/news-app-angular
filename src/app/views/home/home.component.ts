@@ -1,8 +1,12 @@
 import { NewsApiService } from 'src/app/components/shared/services/news-API/news-api.service';
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Subscription} from "rxjs";
+import {Observable, Subscription} from "rxjs";
 import {ISliderNews} from "../../core/models/page-carousel.model";
 import {IArticle} from "../../core/models/news-api-model";
+import { select, Store } from '@ngrx/store';
+import * as homeActions from '../../core/store/actions/news.action';
+import { isLoadingSelector } from 'src/app/core/store';
+import { AppStateInterface } from 'src/app/models/appState.interface';
 
 @Component({
   selector: 'app-home',
@@ -13,10 +17,14 @@ export class HomeComponent implements OnInit, OnDestroy {
   private readonly _unSubscription$: Subscription = new Subscription();
   public carouselNewsArray: Array<ISliderNews> = [];
   public mainPanelNews: IArticle[] = [];
+  public isLoading$: Observable<boolean>;
 
-  constructor(private readonly newsService: NewsApiService) { }
+  constructor(private readonly newsService: NewsApiService, private store: Store<AppStateInterface>) {
+    this.isLoading$ = this.store.pipe(select(isLoadingSelector));
+  }
 
   public ngOnInit(): void {
+    this.store.dispatch(homeActions.LOAD_NEWS())
     this.getNewsForHomePageContent();
   }
 

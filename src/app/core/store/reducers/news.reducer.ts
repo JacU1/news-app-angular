@@ -5,11 +5,12 @@ import { NewsState } from "../store.model";
 export const initialState : NewsState = {
     data: [],
     loaded: false,
-    loading: false
+    loading: false,
+    error: null
 }
 
-export const newsReducer = createReducer(initialState, 
-    on(fromNews.LOAD_NEWS,(state) => ({...state, data: [], loaded: false, loading: true})),
-    on(fromNews.LOAD_NEWS_FAIL, (state, { payload }) => ({ ...state, data: payload, loaded: false, loading: false})),
+export const newsReducers = createReducer(initialState, 
+    on(fromNews.LOAD_NEWS,(state) => ({...state, loading: true})),
+    on(fromNews.LOAD_NEWS_FAIL, (state, { payload }) => ({ ...state, error: ''})),
     on(fromNews.LOAD_NEWS_SUCCESS, (state, { payload }) => ({ ...state, data: payload, loaded: true, loading: false}))
 );
