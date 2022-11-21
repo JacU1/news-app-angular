@@ -1,7 +1,6 @@
 import { createSelector } from "@ngrx/store";
-import { NewsState } from "../store.model";
-import { IArticle } from "src/app/core/models/news-api-model";
+import { AppStateInterface } from "src/app/models/appState.interface";
 
-export const selectNews = (state : NewsState) => state.data;
+export const selectNewsFeature = (state : AppStateInterface) => state.stateData;
 
-export const selectAppleNews = createSelector(selectNews, (allNews: IArticle | any) => {})
+export const isLoadingSelector = createSelector(selectNewsFeature, (state) => state?.loading);

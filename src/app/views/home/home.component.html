@@ -2,7 +2,11 @@
 <ng-container>
   <app-main-news
   [mainPanelNewsArray] = "mainPanelNews"
+  [isLoading]="isLoading$ | async"
   ></app-main-news>
 </ng-container>
 
+<div *ngIf="isLoading$ | async">
+    ...isLoading
+</div>
 
