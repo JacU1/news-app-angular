@@ -9,6 +9,7 @@ import {CommonModule} from "@angular/common";
 import {HomeRoutingModule} from "./home-routing.module";
 import {NewsApiService} from "../../components/shared/services/news-API/news-api.service";
 import { StoreModule } from '@ngrx/store';
+import { newsReducers } from 'src/app/core/store';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { StoreModule } from '@ngrx/store';
     CarouselModule,
     SharedModule,
     CoreModule,
+    StoreModule.forFeature('home', newsReducers)
   ],
   exports: [],
   providers: [NewsApiService],
