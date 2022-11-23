@@ -23,7 +23,7 @@ import { newsReducers } from 'src/app/core/store';
     CarouselModule,
     SharedModule,
     CoreModule,
-    StoreModule.forFeature('home', newsReducers)
+    StoreModule.forFeature('homePage', newsReducers)
   ],
   exports: [],
   providers: [NewsApiService],
