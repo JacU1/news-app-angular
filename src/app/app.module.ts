@@ -9,6 +9,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { environment } from 'src/environments/environment';
     SharedModule,
     CoreModule,
     StoreModule.forRoot({}),
+    EffectsModule.forRoot(),
     StoreDevtoolsModule.instrument({        // tylko do debugowania 
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode
