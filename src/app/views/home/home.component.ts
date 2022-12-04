@@ -5,7 +5,7 @@ import {ISliderNews} from "../../core/models/page-carousel.model";
 import {IArticle} from "../../core/models/news-api-model";
 import { select, Store } from '@ngrx/store';
 import * as homeActions from '../../core/store/actions/news.action';
-import { isLoadingSelector, selectNewsFeature } from 'src/app/core/store';
+import { articlesSelector, isLoadingSelector, selectNewsFeature } from 'src/app/core/store';
 import { AppStateInterface } from 'src/app/models/appState.interface';
 
 @Component({
@@ -18,9 +18,11 @@ export class HomeComponent implements OnInit, OnDestroy {
   public carouselNewsArray: Array<ISliderNews> = [];
   public mainPanelNews: IArticle[] = [];
   public isLoading$: Observable<boolean> = of(false);
+  public articles$: Observable<IArticle | object> = of({});
 
   constructor(private readonly newsService: NewsApiService, private store: Store<AppStateInterface>) {
     this.isLoading$ = this.store.pipe(select(isLoadingSelector));
+    this.articles$ = this.store.pipe(select(articlesSelector))
   }
 
   public ngOnInit(): void {

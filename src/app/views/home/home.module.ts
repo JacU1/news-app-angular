@@ -10,6 +10,8 @@ import {HomeRoutingModule} from "./home-routing.module";
 import {NewsApiService} from "../../components/shared/services/news-API/news-api.service";
 import { StoreModule } from '@ngrx/store';
 import { newsReducers } from 'src/app/core/store';
+import { EffectsModule } from '@ngrx/effects';
+import { NewsEffects } from 'src/app/core/store/effects/news.effects';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { newsReducers } from 'src/app/core/store';
     CarouselModule,
     SharedModule,
     CoreModule,
-    StoreModule.forFeature('homePage', newsReducers)
+    StoreModule.forFeature('homePage', newsReducers),
+    EffectsModule.forFeature([NewsEffects])
   ],
   exports: [],
   providers: [NewsApiService],
