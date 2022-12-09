@@ -1,3 +1,4 @@
+import { LoadingSpinnerService } from './../../components/shared/components/loading-spinner/services/loading-spinner.service';
 import { NewsApiService } from 'src/app/components/shared/services/news-API/news-api.service';
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Observable, of, Subscription} from "rxjs";
@@ -6,7 +7,7 @@ import {IArticle} from "../../core/models/news-api-model";
 import { select, Store } from '@ngrx/store';
 import * as homeActions from '../../core/store/actions/news.action';
 import { articlesSelector, isLoadingSelector, selectNewsFeature } from 'src/app/core/store';
-import { AppStateInterface } from 'src/app/models/appState.interface';
+import { AppStateInterface } from 'src/app/core/models/appState.interface';
 
 @Component({
   selector: 'app-home',
@@ -20,9 +21,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   public isLoading$: Observable<boolean> = of(false);
   public articles$: Observable<IArticle | object> = of({});
 
-  constructor(private readonly newsService: NewsApiService, private store: Store<AppStateInterface>) {
+  constructor(private readonly newsService: NewsApiService, private store: Store<AppStateInterface>, private readonly LoadingSpinnerService : LoadingSpinnerService) {
     this.isLoading$ = this.store.pipe(select(isLoadingSelector));
-    this.articles$ = this.store.pipe(select(articlesSelector))
+    this.articles$ = this.store.pipe(select(articlesSelector));
   }
 
   public ngOnInit(): void {
