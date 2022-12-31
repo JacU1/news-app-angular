@@ -1,4 +1,4 @@
-import { NewsState } from "../core/store/store.model";
+import { NewsState } from "../store/store.model";
 
 export interface AppStateInterface {
     homePage: NewsState

@@ -1,5 +1,5 @@
 import { createSelector } from "@ngrx/store";
-import { AppStateInterface } from "src/app/models/appState.interface";
+import { AppStateInterface } from "src/app/core/models/appState.interface";
 
 export const selectNewsFeature = (state : AppStateInterface) => state.homePage;
 

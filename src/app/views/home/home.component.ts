@@ -6,7 +6,7 @@ import {IArticle} from "../../core/models/news-api-model";
 import { select, Store } from '@ngrx/store';
 import * as homeActions from '../../core/store/actions/news.action';
 import { articlesSelector, isLoadingSelector, selectNewsFeature } from 'src/app/core/store';
-import { AppStateInterface } from 'src/app/models/appState.interface';
+import { AppStateInterface } from 'src/app/core/models/appState.interface';
 
 @Component({
   selector: 'app-home',
@@ -17,12 +17,12 @@ export class HomeComponent implements OnInit, OnDestroy {
   private readonly _unSubscription$: Subscription = new Subscription();
   public carouselNewsArray: Array<ISliderNews> = [];
   public mainPanelNews: IArticle[] = [];
-  public isLoading$: Observable<boolean> = of(false);
-  public articles$: Observable<IArticle | object> = of({});
+  public isLoading$: Observable<boolean>;
+  public articles$: Observable<IArticle | object>;
 
   constructor(private readonly newsService: NewsApiService, private store: Store<AppStateInterface>) {
-    this.isLoading$ = this.store.pipe(select(isLoadingSelector));
-    this.articles$ = this.store.pipe(select(articlesSelector))
+    this.isLoading$ = this.store.select(isLoadingSelector);
+    this.articles$ = this.store.select(articlesSelector);
   }
 
   public ngOnInit(): void {
@@ -41,7 +41,6 @@ export class HomeComponent implements OnInit, OnDestroy {
       .subscribe(news => {
         news.length = 4;
         this.mainPanelNews = news;
-        console.log(this.mainPanelNews);
         news.forEach(item => {
           const sliderItem : ISliderNews = {
             image: item.urlToImage,
