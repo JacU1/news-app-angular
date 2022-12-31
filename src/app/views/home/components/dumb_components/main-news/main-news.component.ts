@@ -17,8 +17,6 @@ export class MainNewsComponent implements OnChanges {
   constructor() {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(this.isLoading);
-    console.log(this.mainPanelNewsArray);
     this.newsItem = this.mainPanelNewsArray[0];
   }
 }

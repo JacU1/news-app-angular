@@ -1,4 +1,3 @@
-import { LoadingSpinnerService } from './../../components/shared/components/loading-spinner/services/loading-spinner.service';
 import { NewsApiService } from 'src/app/components/shared/services/news-API/news-api.service';
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Observable, of, Subscription} from "rxjs";
@@ -18,12 +17,12 @@ export class HomeComponent implements OnInit, OnDestroy {
   private readonly _unSubscription$: Subscription = new Subscription();
   public carouselNewsArray: Array<ISliderNews> = [];
   public mainPanelNews: IArticle[] = [];
-  public isLoading$: Observable<boolean> = of(false);
-  public articles$: Observable<IArticle | object> = of({});
+  public isLoading$: Observable<boolean>;
+  public articles$: Observable<IArticle | object>;
 
-  constructor(private readonly newsService: NewsApiService, private store: Store<AppStateInterface>, private readonly LoadingSpinnerService : LoadingSpinnerService) {
-    this.isLoading$ = this.store.pipe(select(isLoadingSelector));
-    this.articles$ = this.store.pipe(select(articlesSelector));
+  constructor(private readonly newsService: NewsApiService, private store: Store<AppStateInterface>) {
+    this.isLoading$ = this.store.select(isLoadingSelector);
+    this.articles$ = this.store.select(articlesSelector);
   }
 
   public ngOnInit(): void {
@@ -42,7 +41,6 @@ export class HomeComponent implements OnInit, OnDestroy {
       .subscribe(news => {
         news.length = 4;
         this.mainPanelNews = news;
-        console.log(this.mainPanelNews);
         news.forEach(item => {
           const sliderItem : ISliderNews = {
             image: item.urlToImage,
