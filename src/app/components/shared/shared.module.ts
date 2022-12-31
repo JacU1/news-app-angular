@@ -3,16 +3,16 @@ import { NgModule } from '@angular/core';
 import { NewsApiService } from './services/news-API/news-api.service';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { LoadingSpinnerService } from './components/loading-spinner/services/loading-spinner.service';
-import { LoadingSpinnerInterceptor } from './services/loading-spinner.interceptor';
+import { LoadingSpinnerInterceptor } from './interceptors/loading-spinner.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LoadingSpinnerService } from './services/loading-spinner/loading-spinner.service';
 @NgModule({
   declarations: [
     LoadingSpinnerComponent
   ],
-  imports: [ MatProgressSpinnerModule, CommonModule],
+  imports: [MatProgressSpinnerModule, CommonModule],
   exports: [LoadingSpinnerComponent],
-  providers: [NewsApiService, LoadingSpinnerService, 
+  providers: [NewsApiService, LoadingSpinnerService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LoadingSpinnerInterceptor,
