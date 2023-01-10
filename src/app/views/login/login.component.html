@@ -1,6 +1,8 @@
-<div class="welcome-text-wrapper">
-  <h1>POLAND</h1>
-  <h1>WORLD</h1>
+<div class="main">
+  <div class="logo-panel"></div>
+  <div class="left-panel"></div>
+  <div class="behind-form-panel"></div>
+  <div class="right-panel"></div>
 </div>
 
 <div class="login-form-wrapper">
@@ -18,6 +20,10 @@
           <input type="checkbox" formControlName="rememberMeCheckBox" class="form-check-input" id="exampleCheck1">
           <label class="form-check-label" for="exampleCheck1">Check me out</label>
         </div>
-        <button type="submit" class="btn btn-primary login-button">Submit</button>
+        <button type="submit" class="btn btn-primary login-button" (click)="onLoginClick()" >Submit</button>
       </form>
+
+      <div *ngIf="wrongCredentials" class="alert alert-danger" role="alert">
+        This is a danger alert—check it out!
+      </div>
 </div>

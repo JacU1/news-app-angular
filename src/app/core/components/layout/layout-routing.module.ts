@@ -1,3 +1,4 @@
+import { LoginComponent } from './../../../views/login/login.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MainLayoutComponent } from './main-layout/main-layout.component';
@@ -5,9 +6,7 @@ import { MainLayoutComponent } from './main-layout/main-layout.component';
 const routes: Routes = [
   {
     path: '',
-    children: [
-      { path: 'login', loadChildren: () => import('../../../views/login/login.module').then(m => m.LoginModule)}
-    ]
+    component: LoginComponent,
   },
   {
     path: 'app',
