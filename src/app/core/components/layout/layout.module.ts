@@ -1,3 +1,4 @@
+import { LoginModule } from './../../../views/login/login.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MainLayoutComponent } from './main-layout/main-layout.component';
@@ -9,6 +10,7 @@ import { LayoutRoutingModule } from "./layout-routing.module";
   imports: [
     CommonModule,
     LayoutRoutingModule,
+    LoginModule
   ],
   exports: [],
   declarations: [
