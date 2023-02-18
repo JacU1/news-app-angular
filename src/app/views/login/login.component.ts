@@ -1,5 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, Inject, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -7,15 +7,16 @@ import { Router } from '@angular/router';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoginComponent implements OnInit, OnDestroy {
 
   public wrongCredentials = false;
   
   public loginFormGroup = this.fb.group({
-    loginName: new FormControl(null, [Validators.required]),
-    password: new FormControl(null, [Validators.required, Validators.min(6), Validators.max(25)]),
+    loginName: new FormControl('', [Validators.required]),
+    password: new FormControl('', [Validators.required, Validators.min(6), Validators.max(25)]),
     rememberMeCheckBox: new FormControl(false)
   });
 
@@ -30,7 +31,11 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   public onLoginClick(): void {
-    this.router.navigate(['./app/home']);
+    if(this.loginFormGroup.get("loginName")?.value === "root" && this.loginFormGroup.get("password")?.value === "root"){
+      this.router.navigate(['./app/home']);
+    }else {
+      alert("Wrong login or password");
+    }
   }
 
 }

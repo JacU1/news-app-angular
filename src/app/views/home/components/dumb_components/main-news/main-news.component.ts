@@ -1,5 +1,5 @@
+import { IfStmt, ThisReceiver } from '@angular/compiler';
 import {ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import { Observable } from 'rxjs';
 import {IArticle} from "../../../../../core/models/news-api-model";
 
 @Component({
@@ -9,7 +9,7 @@ import {IArticle} from "../../../../../core/models/news-api-model";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MainNewsComponent implements OnChanges {
-  @Input() mainPanelNewsArray : IArticle[] = [];
+  @Input() mainPanelNewsArray : IArticle[] | null = [];
   @Input() isLoading: boolean | null = false;
 
   public newsItem?: IArticle;
@@ -17,6 +17,9 @@ export class MainNewsComponent implements OnChanges {
   constructor() {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.newsItem = this.mainPanelNewsArray[0];
+    console.log(this.mainPanelNewsArray);
+    if(this.mainPanelNewsArray) {
+      this.newsItem = this.mainPanelNewsArray[0];
+    }
   }
 }

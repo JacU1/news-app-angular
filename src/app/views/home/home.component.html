@@ -1,6 +1,6 @@
 <ng-container>
   <app-main-news
-  [mainPanelNewsArray] = "mainPanelNews"
+  [mainPanelNewsArray]="articles$ | async"
   [isLoading]="isLoading$ | async"
   ></app-main-news>
 </ng-container>
