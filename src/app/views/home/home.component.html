@@ -5,7 +5,9 @@
   ></app-main-news>
 </ng-container>
 
-<div *ngIf="isLoading$ | async">
-    ...isLoading
-</div>
+<ng-container>
+  <app-content-list
+    [contentListArticles] = "articlesForList$ | async">
+  </app-content-list>
+</ng-container>
 
