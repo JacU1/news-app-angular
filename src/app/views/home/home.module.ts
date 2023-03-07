@@ -12,12 +12,14 @@ import { StoreModule } from '@ngrx/store';
 import { newsReducers } from 'src/app/core/store';
 import { EffectsModule } from '@ngrx/effects';
 import { NewsEffects } from 'src/app/core/store/effects/news.effects';
+import { ContentListComponent } from './components/dumb_components/content-list/content-list.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
     MainNewsComponent,
     PageCarouselComponent,
+    ContentListComponent,
   ],
   imports: [
     CommonModule,
