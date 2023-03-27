@@ -5,7 +5,7 @@ import { IArticle } from 'src/app/core/models/news-api-model';
 @Component({
   selector: 'app-content-list',
   templateUrl: './content-list.component.html',
-  styleUrls: ['./content-list.component.sass']
+  styleUrls: ['./content-list.component.scss']
 })
 export class ContentListComponent implements OnInit, OnChanges {
   @Input() contentListArticles?: IArticle[] | null;

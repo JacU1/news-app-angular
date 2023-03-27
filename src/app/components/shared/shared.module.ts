@@ -6,13 +6,14 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LoadingSpinnerInterceptor } from './interceptors/loading-spinner.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoadingSpinnerService } from './services/loading-spinner/loading-spinner.service';
+import { AuthService } from './services/auth/auth-service';
 @NgModule({
   declarations: [
     LoadingSpinnerComponent
   ],
   imports: [MatProgressSpinnerModule, CommonModule],
   exports: [LoadingSpinnerComponent],
-  providers: [NewsApiService, LoadingSpinnerService,
+  providers: [NewsApiService, LoadingSpinnerService, AuthService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LoadingSpinnerInterceptor,

@@ -5,6 +5,7 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
 import {CommonModule} from "@angular/common";
 import { LoginComponent } from './login.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from 'src/app/components/shared/services/auth/auth-service';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CoreModule,
   ],
   exports: [],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [LoginComponent]
 })
 export class LoginModule { }
