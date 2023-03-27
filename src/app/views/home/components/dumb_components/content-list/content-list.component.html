@@ -1,24 +1,22 @@
 <ng-container>
-    <div class="container-xl">
+    <div class="container-xl content-list__background">
       <div class="row">
         <div class="col">
-          1 of 3
         </div>
         <div class="col-8">
             <ng-container *ngFor="let article of listArticleItems; let i = index">
-                <div class="card mt-5">
+                <div class="card mt-5" style="border: none;">
                     <img class="img-fluid card-img-top" src="{{article.urlToImage}}">
                     <div class="card-body">
-                      <h5 class="card-title">Test</h5>
-                      <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut eum similique repellat a laborum, rerum voluptates ipsam eos quo tempore iusto dolore modi dolorum in pariatur. Incidunt repellendus praesentium quae!</p>
-                      <a href="" class="btn btn-outline-success btn-sm">Read More</a>
+                      <h2 class="card-title">{{article.title}}</h2>
+                      <p class="card-text">{{article.description}}</p>
+                      <a href="" class="btn btn-outline-success btn-sm">{{"READ_MORE"}}</a>
                       <a href="" class="btn btn-outline-danger btn-sm"><i class="far fa-heart"></i></a>
                     </div>
                   </div>
             </ng-container>
         </div>
         <div class="col">
-          3 of 3
         </div>
       </div>
     </div>
