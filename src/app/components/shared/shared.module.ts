@@ -7,12 +7,14 @@ import { LoadingSpinnerInterceptor } from './interceptors/loading-spinner.interc
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoadingSpinnerService } from './services/loading-spinner/loading-spinner.service';
 import { AuthService } from './services/auth/auth-service';
+import { NotificationBoxComponent } from './components/notification-box/notification-box.component';
 @NgModule({
   declarations: [
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    NotificationBoxComponent
   ],
   imports: [MatProgressSpinnerModule, CommonModule],
-  exports: [LoadingSpinnerComponent],
+  exports: [LoadingSpinnerComponent, NotificationBoxComponent],
   providers: [NewsApiService, LoadingSpinnerService, AuthService,
     {
       provide: HTTP_INTERCEPTORS,
