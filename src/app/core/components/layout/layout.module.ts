@@ -13,8 +13,8 @@ import { SignUpModule } from 'src/app/views/sign-up/sign-up.module';
     CommonModule,
     LayoutRoutingModule,
     LoginModule,
-    SignUpModule,
-    PageNotFoundModule
+    PageNotFoundModule,
+    SignUpModule
   ],
   exports: [],
   declarations: [

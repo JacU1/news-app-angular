@@ -12,7 +12,7 @@ const routes: Routes = [
     component: LoginComponent,
   },
   {
-    path:'sign-up',
+    path: 'signUp',
     component: SignUpComponent
   },
   {
@@ -26,7 +26,7 @@ const routes: Routes = [
       },
       { 
         path: 'articles', 
-        loadChildren: () => import('../../../views/article/article.module').then(m => m.ArticleModule)
+        loadChildren: () => import('../../../views/article/article.module').then(m => m.ArticleModule),
       },
     ]
   },
