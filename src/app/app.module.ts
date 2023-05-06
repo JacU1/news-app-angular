@@ -10,6 +10,15 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
 import { EffectsModule } from '@ngrx/effects';
+import { JwtModule } from "@auth0/angular-jwt";
+
+export function tokenGetter() { 
+  return localStorage.getItem("token"); 
+}
+
+export function refreshTokenGetter() {
+  return localStorage.getItem("refreshToken");
+}
 
 @NgModule({
   declarations: [
@@ -28,7 +37,14 @@ import { EffectsModule } from '@ngrx/effects';
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode
       autoPause: true, // Pauses recording actions and state changes when the extension window is not open
-    })
+    }),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ["localhost:9002"],
+        disallowedRoutes: ["localhost:9002/api/Auth/login", "[::1]:9002/api/Auth"]
+      }
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
