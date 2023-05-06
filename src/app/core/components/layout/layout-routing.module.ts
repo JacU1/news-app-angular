@@ -4,11 +4,16 @@ import { Routes, RouterModule } from '@angular/router';
 import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { PageNotFoundComponent } from 'src/app/views/page-not-found/page-not-found.component';
 import { CanLoadLoggedUserGuard } from '../../guards/can-activate-logged-user.guard';
+import { SignUpComponent } from 'src/app/views/sign-up/sign-up.component';
 
 const routes: Routes = [
   {
     path: '',
     component: LoginComponent,
+  },
+  {
+    path:'sign-up',
+    component: SignUpComponent
   },
   {
     path: 'app',
