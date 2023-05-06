@@ -6,13 +6,15 @@ import { FooterComponent } from "../footer/footer.component";
 import { NavbarComponent } from "../navbar/navbar.component";
 import { LayoutRoutingModule } from "./layout-routing.module";
 import { PageNotFoundModule } from 'src/app/views/page-not-found/page-not-found.module';
+import { SignUpModule } from 'src/app/views/sign-up/sign-up.module';
 
 @NgModule({
   imports: [
     CommonModule,
     LayoutRoutingModule,
     LoginModule,
-    PageNotFoundModule
+    PageNotFoundModule,
+    SignUpModule
   ],
   exports: [],
   declarations: [
