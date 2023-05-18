@@ -36,11 +36,15 @@ export class AuthService {
 
   public refreshToken(token: string | null, refreshToken: string| null): Observable<IUserAuthResponse> {
     const credentials = JSON.stringify({ accessToken: token, refreshToken: refreshToken });
+    console.log(credentials);
 
-    return this._http.post<IUserAuthResponse>(`${BASE_API}/refresh`, credentials).pipe(
+    const headers = new HttpHeaders()
+    .set('content-type', 'application/json')
+
+    return this._http.post<IUserAuthResponse>(`${BASE_API}/api/Token/refresh`,credentials, {headers}).pipe(
       catchError(err => {
-        const errMessage = err.error.errorMessage;
-        this._notificationService.showNotificationBox(NotificationTypes.DANGER, errMessage);
+        console.log(err);
+        this._notificationService.showNotificationBox(NotificationTypes.DANGER, err.message);
         return EMPTY;
       })
     );

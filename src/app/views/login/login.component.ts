@@ -25,7 +25,6 @@ export class LoginComponent implements OnInit, OnDestroy {
   });
 
   constructor(private readonly fb: FormBuilder,
-    @Inject(DOCUMENT) private _document: Document,
     private readonly _notificationService: NotificationBoxService,
     private readonly _router: Router, 
     private readonly _authService: AuthService) 
@@ -34,11 +33,9 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
 
   public ngOnInit(): void {
-    this._document.body.classList.add('black-background');
   }
 
   public ngOnDestroy(): void {
-    this._document.body.classList.remove('bodybg-color');
     this.sub.unsubscribe();
   }
 
@@ -48,5 +45,9 @@ export class LoginComponent implements OnInit, OnDestroy {
       this._notificationService.showNotificationBox(NotificationTypes.SUCCES, "Login successful !");
       this._router.navigate(["app/home"]);
     }));
+  }
+
+  public onRegisterNewUserClick(): void {
+    this._router.navigate(["signup"]);
   }
 }
