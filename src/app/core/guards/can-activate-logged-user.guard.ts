@@ -15,12 +15,13 @@ export class CanLoadLoggedUserGuard implements CanLoad {
     const token = tokenGetter();
 
     if(token && !this._jwtHelper.isTokenExpired(token)) {
+      console.log(this._jwtHelper.decodeToken(token))
       return true;
     }
 
     if(this._jwtHelper.isTokenExpired(token)) {
       const refreshToken = refreshTokenGetter();
-      const newTokens = await firstValueFrom(this._authService.refreshToken(token, refreshToken));
+      const newTokens = await this._authService.refreshToken(token, refreshToken).toPromise();
       console.log(newTokens);
       if(newTokens){
         localStorage.setItem("token", newTokens.token);

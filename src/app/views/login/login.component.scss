@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:900');
+@import '../../../styles.scss';
 
 .main {
   height: 100vh;
@@ -23,7 +24,7 @@
 }
 .left-panel {
   position: absolute;
-  background-image: url('../../../assets/people.jpg');
+  background-image: url('/assets/people.jpg');
   background-size: 2700px 1500px;
   height: 70vh;
   width: 21vw;
@@ -37,7 +38,7 @@
 }
 .behind-form-panel {
   position: absolute;
-  background-image: url('../../../assets/login-page-foto_2.jpg');
+  background-image: url('/assets/login-page-foto_2.jpg');
   background-size: 2700px 1500px;
 
   height: 80vh;
@@ -56,7 +57,7 @@
 .right-panel {
   position: absolute;
   overflow: hidden;
-  background-image: url('../../../assets/login-page-foto_1.jpeg');
+  background-image: url('/assets/login-page-foto_1.jpeg');
   background-size: 2700px 1500px;
 
   height: 70vh;
@@ -97,16 +98,6 @@
     background-position: Calc(-70vw - 40px) 50%;
   }
 }
-
-
-
-.black-background {
-    background: radial-gradient(ellipse at bottom, #022227 50%, #292929 100%);
-     position: relative;
-     height: 100vh;
-     width: 100vw;
-     margin: 0;
-   }
    
 .login-form-wrapper {
     position: fixed;
