@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { NotificationBoxService } from 'src/app/components/shared/services/notification-box/notification-box.service';
-import { NotificationTypes } from '../../models/notification-box.interface';
+import { AuthService } from 'src/app/shared/services/auth/auth-service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,16 +8,12 @@ import { NotificationTypes } from '../../models/notification-box.interface';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private readonly _router: Router,
-              private readonly _notificationService: NotificationBoxService) { }
+  constructor(private readonly _authService: AuthService) { }
 
   ngOnInit(): void {}
 
   logoutUser(): void {
-    this._notificationService.showNotificationBox(NotificationTypes.INFO, "User logged out.")
-    localStorage.removeItem("token");
-    localStorage.removeItem("refreshToken");
-    this._router.navigate([""]);
+    this._authService.logoutUser();
   }
 
 }

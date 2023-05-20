@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, EMPTY, map, mergeMap, of } from 'rxjs';
-import { NewsApiService } from 'src/app/components/shared/services/news-API/news-api.service';
+import { NewsApiService } from 'src/app/shared/services/news-API/news-api.service';
 import { StoreActionsEnum } from '../../models/news.enums';
 import * as NewsActions from '../actions/news.action';
 

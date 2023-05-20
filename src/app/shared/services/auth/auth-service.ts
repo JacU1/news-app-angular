@@ -6,14 +6,13 @@ import { BASE_API } from 'src/app/core/config/constants';
 import { NotificationTypes } from 'src/app/core/models/notification-box.interface';
 import { IUserAuthResponse } from 'src/app/core/models/user-auth-response';
 import { NotificationBoxService } from '../notification-box/notification-box.service';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthService {
   constructor(private readonly _http: HttpClient,
-              private readonly _notificationService: NotificationBoxService) {}
-
-  public userLoggedIn!: boolean;
-  public tokenRefresed!: boolean;
+              private readonly _notificationService: NotificationBoxService,
+              private readonly _router: Router) {}
 
   public loginUser(loginForm: FormGroup): Observable<IUserAuthResponse> {
     const loginBody = {
@@ -25,8 +24,6 @@ export class AuthService {
       .pipe(tap((auth => {
         localStorage.setItem("token", auth.token);
         localStorage.setItem("refreshToken", auth.refreshToken);
-       
-        this.userLoggedIn = true;
       })),catchError(err => {
         const errMessage = err.error.errors ? err.error.errors.Email[0] : err.error.errorMessage;
         this._notificationService.showNotificationBox(NotificationTypes.DANGER, errMessage);
@@ -48,5 +45,12 @@ export class AuthService {
         return EMPTY;
       })
     );
+  }
+
+  public logoutUser() : void {
+    this._notificationService.showNotificationBox(NotificationTypes.INFO, "User logged out.")
+    localStorage.removeItem("token");
+    localStorage.removeItem("refreshToken");
+    this._router.navigate([""]);
   }
 }

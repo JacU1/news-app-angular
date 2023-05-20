@@ -3,8 +3,8 @@ import { ChangeDetectionStrategy, Component, Inject, OnDestroy, OnInit, ViewEnca
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { catchError, EMPTY, Subscription } from 'rxjs';
-import { AuthService } from 'src/app/components/shared/services/auth/auth-service';
-import { NotificationBoxService } from 'src/app/components/shared/services/notification-box/notification-box.service';
+import { AuthService } from 'src/app/shared/services/auth/auth-service';
+import { NotificationBoxService } from 'src/app/shared/services/notification-box/notification-box.service';
 import { NotificationTypes } from 'src/app/core/models/notification-box.interface';
 
 @Component({
