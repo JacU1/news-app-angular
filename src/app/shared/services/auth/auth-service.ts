@@ -36,7 +36,7 @@ export class AuthService {
     console.log(credentials);
 
     const headers = new HttpHeaders()
-    .set('content-type', 'application/json')
+    .set('content-type', 'application/json');
 
     return this._http.post<IUserAuthResponse>(`${BASE_API}/api/Token/refresh`,credentials, {headers}).pipe(
       catchError(err => {
@@ -52,5 +52,28 @@ export class AuthService {
     localStorage.removeItem("token");
     localStorage.removeItem("refreshToken");
     this._router.navigate([""]);
+  }
+
+  public registerUser(form: FormGroup): Observable<any> {
+    const formValue = form.getRawValue();
+    const body = {
+      name: formValue.firstName,
+      lastName: formValue.lastName,
+      email: formValue.email,
+      userTag: formValue.userTag,
+      password: formValue.passwordFormGroup.password
+    }
+    console.log(body);
+
+    const headers = new HttpHeaders()
+    .set('content-type', 'application/json');
+
+    return this._http.post<any>(`${BASE_API}/api/User/register`,body, {headers}).pipe(
+      catchError(err => {
+        console.log(err);
+        this._notificationService.showNotificationBox(NotificationTypes.DANGER, err.message);
+        return EMPTY;
+      })
+    );
   }
 }
