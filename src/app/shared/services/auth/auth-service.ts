@@ -6,14 +6,13 @@ import { BASE_API } from 'src/app/core/config/constants';
 import { NotificationTypes } from 'src/app/core/models/notification-box.interface';
 import { IUserAuthResponse } from 'src/app/core/models/user-auth-response';
 import { NotificationBoxService } from '../notification-box/notification-box.service';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthService {
   constructor(private readonly _http: HttpClient,
-              private readonly _notificationService: NotificationBoxService) {}
-
-  public userLoggedIn!: boolean;
-  public tokenRefresed!: boolean;
+              private readonly _notificationService: NotificationBoxService,
+              private readonly _router: Router) {}
 
   public loginUser(loginForm: FormGroup): Observable<IUserAuthResponse> {
     const loginBody = {
@@ -25,8 +24,6 @@ export class AuthService {
       .pipe(tap((auth => {
         localStorage.setItem("token", auth.token);
         localStorage.setItem("refreshToken", auth.refreshToken);
-       
-        this.userLoggedIn = true;
       })),catchError(err => {
         const errMessage = err.error.errors ? err.error.errors.Email[0] : err.error.errorMessage;
         this._notificationService.showNotificationBox(NotificationTypes.DANGER, errMessage);
@@ -39,9 +36,39 @@ export class AuthService {
     console.log(credentials);
 
     const headers = new HttpHeaders()
-    .set('content-type', 'application/json')
+    .set('content-type', 'application/json');
 
     return this._http.post<IUserAuthResponse>(`${BASE_API}/api/Token/refresh`,credentials, {headers}).pipe(
+      catchError(err => {
+        console.log(err);
+        this._notificationService.showNotificationBox(NotificationTypes.DANGER, err.message);
+        return EMPTY;
+      })
+    );
+  }
+
+  public logoutUser() : void {
+    this._notificationService.showNotificationBox(NotificationTypes.INFO, "User logged out.")
+    localStorage.removeItem("token");
+    localStorage.removeItem("refreshToken");
+    this._router.navigate([""]);
+  }
+
+  public registerUser(form: FormGroup): Observable<any> {
+    const formValue = form.getRawValue();
+    const body = {
+      name: formValue.firstName,
+      lastName: formValue.lastName,
+      email: formValue.email,
+      userTag: formValue.userTag,
+      password: formValue.passwordFormGroup.password
+    }
+    console.log(body);
+
+    const headers = new HttpHeaders()
+    .set('content-type', 'application/json');
+
+    return this._http.post<any>(`${BASE_API}/api/User/register`,body, {headers}).pipe(
       catchError(err => {
         console.log(err);
         this._notificationService.showNotificationBox(NotificationTypes.DANGER, err.message);
