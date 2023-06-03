@@ -2,4 +2,9 @@
 
 .signup {
     height: 100vh !important;
+
+    .btn-dark:hover {
+        background-color: lightgrey;
+        color: black;
+    }
 }

@@ -1,12 +1,13 @@
-<div class="main main-background">
-  <!-- <div class="logo-panel"></div> -->
-  <div class="left-panel"></div>
-  <div class="behind-form-panel"></div>
-  <div class="right-panel"></div>
-</div>
+<div class="container-fluid main main-background">
+  <div class="row h-100">
+    <div class="col">
+      <div class="left-panel"></div>
+      <div class="behind-form-panel"></div>
+      <div class="right-panel"></div>
+    </div>
 
-<div class="login-form-wrapper">
-    <form [formGroup]="loginFormGroup">
+    <div class="col col-lg-2 bg-light">
+      <form class="mt-5" [formGroup]="loginFormGroup">
         <div class="form-group">
           <label for="exampleInputEmail1">Email address</label>
           <input type="email" formControlName="loginName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
@@ -20,8 +21,10 @@
           <label class="form-check-label" for="exampleCheck1">Remember me</label>
         </div>
         <div class="d-flex flex-column mt-4">
-          <button type="submit" class="btn btn-primary login-button" [disabled]="!loginFormGroup.valid" (click)="onLoginClick()">Submit</button>
-          <button type="submit" class="btn btn-primary login-button" (click)="onRegisterNewUserClick()">Register</button>
+          <button type="submit" class="btn btn-dark login-button" [disabled]="!loginFormGroup.valid" (click)="onLoginClick()">Submit</button>
+          <button type="submit" class="btn btn-dark login-button" (click)="onRegisterNewUserClick()">Register</button>
         </div>
       </form>
+    </div>
+  </div>
 </div>
