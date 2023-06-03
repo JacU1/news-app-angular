@@ -27,7 +27,7 @@
   background-image: url('/assets/people.jpg');
   background-size: 2700px 1500px;
   height: 70vh;
-  width: 21vw;
+  width: 17vw;
   background-position: center;
   left: 12vw;
   top: 15%;
@@ -61,7 +61,7 @@
   background-size: 2700px 1500px;
 
   height: 70vh;
-  width: 21vw;
+  width: 17vw;
   left: 65vw;
 
   top: 15%;
@@ -125,4 +125,9 @@
 
 .login-button {
     margin: 10px;
+}
+
+.login-button:hover {
+  background-color: lightgrey;
+  color: black;
 }

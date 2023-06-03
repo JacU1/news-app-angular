@@ -30,16 +30,17 @@ export class SignUpComponent implements OnInit {
               private readonly _notificationBox: NotificationBoxService,
               private readonly _router: Router) 
     {
+
     this.formGroup = this._fb.group({
       firstName: new FormControl<string | null>('', [Validators.required]),
       lastName: new FormControl<string | null>('', [Validators.required]),
-      email: new FormControl<string | null>('', [Validators.required]),
+      email: new FormControl<string | null>('', [Validators.required, Validators.email]),
       passwordFormGroup: this._fb.group({
         password: new FormControl<string | null>('', [
           Validators.required, 
           Validators.min(5),
           Validators.max(25), 
-          Validators.pattern(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*#?&^_-]).{8,}/g)]),
+          Validators.pattern(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/)]),
         confirmPassword: new FormControl<string | null>('', [Validators.required]),
       },{
         validator: CustomFormValidators.confirmPasswordValidator
@@ -48,7 +49,9 @@ export class SignUpComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {console.log(this.formGroup); }
+  ngOnInit(): void {
+    console.log(this.formGroup); 
+  }
 
   onSubmit() : void {
     this.submitClick = true;
