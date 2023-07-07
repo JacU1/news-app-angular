@@ -25,7 +25,7 @@ const routes: Routes = [
         canLoad: [CanLoadLoggedUserGuard]
       },
       { 
-        path: 'articles', 
+        path: 'articles/:title', 
         loadChildren: () => import('../../../views/article/article.module').then(m => m.ArticleModule),
         canLoad: [CanLoadLoggedUserGuard]
       },
