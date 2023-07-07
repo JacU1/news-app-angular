@@ -1,10 +1,9 @@
-import { DOCUMENT } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Inject, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { catchError, EMPTY, Subscription } from 'rxjs';
-import { AuthService } from 'src/app/components/shared/services/auth/auth-service';
-import { NotificationBoxService } from 'src/app/components/shared/services/notification-box/notification-box.service';
+import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/shared/services/auth/auth-service';
+import { NotificationBoxService } from 'src/app/shared/services/notification-box/notification-box.service';
 import { NotificationTypes } from 'src/app/core/models/notification-box.interface';
 
 @Component({
@@ -25,7 +24,6 @@ export class LoginComponent implements OnInit, OnDestroy {
   });
 
   constructor(private readonly fb: FormBuilder,
-    @Inject(DOCUMENT) private _document: Document,
     private readonly _notificationService: NotificationBoxService,
     private readonly _router: Router, 
     private readonly _authService: AuthService) 
@@ -34,11 +32,9 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
 
   public ngOnInit(): void {
-    this._document.body.classList.add('black-background');
   }
 
   public ngOnDestroy(): void {
-    this._document.body.classList.remove('bodybg-color');
     this.sub.unsubscribe();
   }
 
@@ -46,7 +42,11 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.sub.add(this._authService.loginUser(this.loginFormGroup)
     .subscribe(() => {
       this._notificationService.showNotificationBox(NotificationTypes.SUCCES, "Login successful !");
-      this._router.navigate(["app/home"]);
+      this._router.navigate(['app', 'home']);
     }));
+  }
+
+  public onRegisterNewUserClick(): void {
+    this._router.navigate(["signup"]);
   }
 }

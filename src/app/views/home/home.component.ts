@@ -1,9 +1,8 @@
-import { NewsApiService } from 'src/app/components/shared/services/news-API/news-api.service';
 import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/core';
-import {map, Observable, of, Subscription, take, tap} from "rxjs";
+import {map, Observable, Subscription, tap} from "rxjs";
 import {ISliderNews} from "../../core/models/page-carousel.model";
 import {IArticle} from "../../core/models/news-api-model";
-import { select, Store } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import * as homeActions from '../../core/store/actions/news.action';
 import { articlesSelector, isLoadingSelector, selectNewsFeature } from 'src/app/core/store';
 import { AppStateInterface } from 'src/app/core/models/appState.interface';

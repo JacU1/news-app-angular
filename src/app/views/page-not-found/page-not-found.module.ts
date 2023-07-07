@@ -1,6 +1,6 @@
 import { CoreModule } from '../../core/core.module';
 import { NgModule } from '@angular/core';
-import { SharedModule } from 'src/app/components/shared/shared.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 import {CommonModule} from "@angular/common";
 import { PageNotFoundComponent } from './page-not-found.component';
 
