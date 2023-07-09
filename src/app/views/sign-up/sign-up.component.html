@@ -4,7 +4,7 @@
       <app-moving-banners></app-moving-banners>
     </div>
 
-    <div class="col col-lg-2 bg-light">
+    <div class="col col-lg-3 bg-light d-flex flex-column justify-content-between">
      <form [formGroup]="getFormGroup" (ngSubmit)="onSubmit()">
                 <div class="card-body p-md-4 text-black">
                   <h3 class="text-center h1 fw-bold mb-3 mt-1">Sign up !</h3>
@@ -83,12 +83,20 @@
                     </div>
                   </form>
   
-                  <div class="d-flex justify-content-center pt-4">
-                    <button type="button" class="btn btn-dark btn-ms-2 m-2" (click)="onResetForm()">Reset all</button>
-                    <button type="submit" class="btn btn-dark btn ms-2 m-2">Register</button>
+                  <div class="d-flex justify-content-center pt-4 flex-column w-75 m-auto">
+                    <div class="d-flex justify-content-center">
+                      <button type="button" class="btn btn-primary btn-ms-2 m-2 border-0 w-100" (click)="onResetForm()">Reset all</button>
+                      <button type="submit" class="btn btn-primary btn ms-2 m-2 border-0 w-100">Register</button>
+                    </div>
+                    <p class="w-100 text-center mt-4"><small>If you already have a account you can log in</small></p>
+                    <button [routerLink]="['/']" routerLinkActive="router-link-active" class="btn btn-primary btn ms-2 border-0">Log in</button>
                   </div>
                 </div>
               </form>
+              <div class="container m-auto text-center mt-4 mb-1">
+                <p class="text-center m-0"><small>Powered By:</small></p>
+                <img class="img-fluid" src="assets/logo-1-trans.svg">
+              </div>
     </div>
   </div>
 </div>

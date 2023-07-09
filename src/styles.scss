@@ -1,6 +1,39 @@
 $primary-background: #0e1111;
 $white-font: #FAF9F6;
 
+// Color Pallete
+$primary-light1: #D5DDE2;
+$primary-light2: #BAC7CF;
+$secondary-dark1: #0A5050;
+$secondary-dark2: #28303C;
+$alternative-blue1:#3F73A0;
+$alternative-blue2:#5F8DAA;
+$alternative-gold: #80776D;
+
+
+* {
+    font-family: Raleway, sans-serif !important; 
+  }
+
 .main-background {
-    background: radial-gradient(ellipse at bottom, #022227 50%, #292929 100%);
+    background: radial-gradient(ellipse at bottom, #28303C 50%, #0A5050 100%);
+}
+
+.btn {
+    border-radius: 1.25rem !important;
+}
+
+.btn-primary {
+    background-color: $secondary-dark1;
+    color: $primary-light1;
+}
+
+.btn-primary:hover {
+    background-color: $secondary-dark2;
+    color: $primary-light2;
+}
+
+.btn-primary:disabled {
+    background-color: $primary-light2;
+    color: $alternative-blue1;
 }
