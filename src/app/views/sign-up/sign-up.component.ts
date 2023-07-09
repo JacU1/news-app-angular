@@ -1,7 +1,9 @@
-import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, PatternValidator, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { takeUntil } from 'rxjs';
 import { NotificationTypes } from 'src/app/core/models/notification-box.interface';
+import { BasePage } from 'src/app/shared/classes/BasePage';
 import { CustomFormValidators } from 'src/app/shared/classes/custom-form-validators';
 import { AuthService } from 'src/app/shared/services/auth/auth-service';
 import { NotificationBoxService } from 'src/app/shared/services/notification-box/notification-box.service';
@@ -11,10 +13,8 @@ import { NotificationBoxService } from 'src/app/shared/services/notification-box
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.scss']
 })
-export class SignUpComponent implements OnInit {
+export class SignUpComponent extends BasePage implements OnInit {
 
-  public submitClick!: boolean;
-  
   private formGroup!: FormGroup;
 
   get getPasswordFormGroup(): FormGroup {
@@ -30,6 +30,7 @@ export class SignUpComponent implements OnInit {
               private readonly _notificationBox: NotificationBoxService,
               private readonly _router: Router) 
     {
+    super();
 
     this.formGroup = this._fb.group({
       firstName: new FormControl<string | null>('', [Validators.required]),
@@ -54,10 +55,8 @@ export class SignUpComponent implements OnInit {
   }
 
   onSubmit() : void {
-    this.submitClick = true;
-    this._authService.registerUser(this.formGroup).subscribe(res => {
+    this._authService.registerUser(this.formGroup).pipe(takeUntil(this.destroyed$)).subscribe(() => {
       this._notificationBox.showNotificationBox(NotificationTypes.SUCCES, "Register done!");
-      console.log(res);
       this._router.navigateByUrl("/");
     });
   }

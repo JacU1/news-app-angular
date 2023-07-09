@@ -1,42 +1,31 @@
-<section class="signup main-background">
-  <div class="container h-100 p-2">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col">
-        <div class="card card-registration my-4 border-0">
-          <div class="row g-0">
-            <div class="col-xl-4 d-none d-xl-block">
-              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img4.webp"
-                alt="Sample photo" class="img-fluid"
-                style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;"
-                />
-            </div>
-            <div class="col-xl-8">
-              <form [formGroup]="getFormGroup" (ngSubmit)="onSubmit()">
+<div class="container-fluid main main-background">
+  <div class="row h-100">
+    <div class="col">
+      <app-moving-banners></app-moving-banners>
+    </div>
+
+    <div class="col col-lg-3 bg-light d-flex flex-column justify-content-between">
+     <form [formGroup]="getFormGroup" (ngSubmit)="onSubmit()">
                 <div class="card-body p-md-4 text-black">
                   <h3 class="text-center h1 fw-bold mb-3 mt-1">Sign up !</h3>
   
-                  <div class="row">
-                    <div class="col-md-6 mb-3">
-                      <div class="form-outline">
-                        <input type="text" formControlName="firstName" class="form-control form-control-md" placeholder="Enter First name">
-                        <ng-container *ngIf="(getFormGroup.valueChanges | async)">
-                          <div *ngIf="getFormGroup.get('firstName')?.errors?.['required']" class="invalid-feedback d-flex">
-                            First name required!
-                          </div>
-                        </ng-container>
-                      </div>
+                    <div class="form-outline mb-3">
+                      <input type="text" formControlName="firstName" class="form-control form-control-md" placeholder="Enter First name">
+                      <ng-container *ngIf="(getFormGroup.valueChanges | async)">
+                        <div *ngIf="getFormGroup.get('firstName')?.errors?.['required']" class="invalid-feedback d-flex">
+                          First name required!
+                        </div>
+                      </ng-container>
                     </div>
-                    <div class="col-md-6 mb-3">
-                      <div class="form-outline">
-                        <input type="text" formControlName="lastName" class="form-control form-control-md" placeholder="Enter Last name">
-                        <ng-container *ngIf="(getFormGroup.valueChanges | async)">
-                          <div *ngIf="getFormGroup.get('lastName')?.errors?.['required']" class="invalid-feedback d-flex">
-                            Last name required!
-                          </div>
-                        </ng-container>
-                      </div>
+
+                    <div class="form-outline mb-3">
+                      <input type="text" formControlName="lastName" class="form-control form-control-md" placeholder="Enter Last name">
+                      <ng-container *ngIf="(getFormGroup.valueChanges | async)">
+                        <div *ngIf="getFormGroup.get('lastName')?.errors?.['required']" class="invalid-feedback d-flex">
+                          Last name required!
+                        </div>
+                      </ng-container>
                     </div>
-                  </div>
 
                   <div class="form-outline mb-3">
                     <input type="email" formControlName="email" class="form-control form-control-md" placeholder="Email"/>
@@ -94,18 +83,21 @@
                     </div>
                   </form>
   
-                  <div class="d-flex justify-content-center pt-4">
-                    <button type="button" class="btn btn-dark btn-ms-2 m-2" (click)="onResetForm()">Reset all</button>
-                    <button type="submit" class="btn btn-dark btn ms-2 m-2">Register</button>
+                  <div class="d-flex justify-content-center pt-4 flex-column w-75 m-auto">
+                    <div class="d-flex justify-content-center">
+                      <button type="button" class="btn btn-primary btn-ms-2 m-2 border-0 w-100" (click)="onResetForm()">Reset all</button>
+                      <button type="submit" class="btn btn-primary btn ms-2 m-2 border-0 w-100">Register</button>
+                    </div>
+                    <p class="w-100 text-center mt-4"><small>If you already have a account you can log in</small></p>
+                    <button [routerLink]="['/']" routerLinkActive="router-link-active" class="btn btn-primary btn ms-2 border-0">Log in</button>
                   </div>
                 </div>
               </form>
-            </div>
-          </div>
-        </div>
-      </div>
+              <div class="container m-auto text-center mt-4 mb-1">
+                <p class="text-center m-0"><small>Powered By:</small></p>
+                <img class="img-fluid" src="assets/logo-1-trans.svg">
+              </div>
     </div>
   </div>
-</section>
-
+</div>
 
