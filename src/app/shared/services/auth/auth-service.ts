@@ -33,7 +33,6 @@ export class AuthService {
 
   public refreshToken(token: string | null, refreshToken: string| null): Observable<IUserAuthResponse> {
     const credentials = JSON.stringify({ accessToken: token, refreshToken: refreshToken });
-    console.log(credentials);
 
     const headers = new HttpHeaders()
     .set('content-type', 'application/json');
@@ -63,7 +62,6 @@ export class AuthService {
       userTag: formValue.userTag,
       password: formValue.passwordFormGroup.password
     }
-    console.log(body);
 
     const headers = new HttpHeaders()
     .set('content-type', 'application/json');
