@@ -7,23 +7,33 @@ import { IArticle } from 'src/app/core/models/news-api-model';
   templateUrl: './content-list.component.html',
   styleUrls: ['./content-list.component.scss']
 })
-export class ContentListComponent implements OnInit, OnChanges {
-  @Input() contentListArticles?: IArticle[] | null;
-
-  public listArticleItems?: IArticle[] | null = [];
-  public listImage: Subject<string> = new Subject<string>();
-
-  constructor() { }
-
-  ngOnInit(): void {
-    console.log(this.contentListArticles);
+export class ContentListComponent implements OnInit {
+  @Input() set contentListArticles(value: IArticle[] | null) {
+    this.listArticleItems = value;
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if(changes["contentListArticles"]){
-      console.log(this.contentListArticles);
-      this.listArticleItems = this.contentListArticles;
-    }
+  public listArticleItems!: IArticle[] | null;
+  public listImage: Subject<string> = new Subject<string>();
+  
+  public currentPage: number = 1;
+
+  constructor() {}
+
+  get currentPageItems(): IArticle[] {
+    const startIndex = (this.currentPage - 1) * 8;
+    return this.listArticleItems!.slice(startIndex, startIndex + 8);
+  }
+
+  get pages(): number[] {
+    const pageCount = Math.ceil(this.listArticleItems!.length / 8);
+    return Array.from({ length: pageCount }, (_, index) => index + 1);
+  }
+
+  changePage(page: number): void {
+    this.currentPage = page;
+  }
+
+  ngOnInit(): void {
   }
 
 }
