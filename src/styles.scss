@@ -19,6 +19,10 @@ $alternative-gold: #80776D;
     background: radial-gradient(ellipse at bottom, #28303C 50%, #0A5050 100%);
 }
 
+.primary-background {
+  background: $primary-background;
+}
+
 .main {
     height: 100vh;
     width: 100vw;
