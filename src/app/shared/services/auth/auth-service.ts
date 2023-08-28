@@ -39,7 +39,6 @@ export class AuthService {
 
     return this._http.post<IUserAuthResponse>(`${BASE_API}/api/Token/refresh`,credentials, {headers}).pipe(
       catchError(err => {
-        console.log(err);
         this._notificationService.showNotificationBox(NotificationTypes.DANGER, err.message);
         return EMPTY;
       })
@@ -68,7 +67,6 @@ export class AuthService {
 
     return this._http.post<any>(`${BASE_API}/api/User/register`,body, {headers}).pipe(
       catchError(err => {
-        console.log(err);
         this._notificationService.showNotificationBox(NotificationTypes.DANGER, err.message);
         return EMPTY;
       })

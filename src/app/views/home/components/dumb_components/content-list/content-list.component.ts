@@ -21,7 +21,7 @@ export class ContentListComponent implements OnInit {
 
   get currentPageItems(): IArticle[] {
     const startIndex = (this.currentPage - 1) * 8;
-    return this.listArticleItems!.slice(startIndex, startIndex + 8);
+    return this.listArticleItems!.slice(startIndex + 1, startIndex + 8);
   }
 
   get pages(): number[] {
@@ -31,6 +31,7 @@ export class ContentListComponent implements OnInit {
 
   changePage(page: number): void {
     this.currentPage = page;
+    window.scrollTo(0, 0);
   }
 
   ngOnInit(): void {
