@@ -15,7 +15,7 @@ export class ContentListComponent implements OnInit {
   public listArticleItems!: IArticle[] | null;
   public listImage: Subject<string> = new Subject<string>();
   
-  public currentPage: number = 1;
+  public currentPage: number = 1; // tutaj signal 
 
   constructor() {}
 

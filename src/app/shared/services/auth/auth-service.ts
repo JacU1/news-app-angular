@@ -30,6 +30,7 @@ export class AuthService {
       })),catchError(err => {
         const errMessage = err.error.errors ? err.error.errors.Email[0] : err.error.errorMessage;
         this._notificationService.showNotificationBox(NotificationTypes.DANGER, errMessage);
+        this._router.navigate(["login"]);
         return EMPTY;
       }));
   }
