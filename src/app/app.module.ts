@@ -13,11 +13,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { JwtModule } from "@auth0/angular-jwt";
 
 export function tokenGetter() { 
-  return localStorage.getItem("token"); 
-}
-
-export function refreshTokenGetter() {
-  return localStorage.getItem("refreshToken");
+  return localStorage.getItem("access_token"); 
 }
 
 @NgModule({

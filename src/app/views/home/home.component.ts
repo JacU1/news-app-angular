@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/core';
-import {map, Observable, of, Subscription, tap} from "rxjs";
+import {filter, map, Observable, of, Subscription, tap} from "rxjs";
 import {ISliderNews} from "../../core/models/page-carousel.model";
 import {IArticle} from "../../core/models/news-api-model";
 import { Store } from '@ngrx/store';
@@ -23,8 +23,8 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   constructor(private readonly _store: Store<AppStateInterface>) {
     this.isLoading$ = this._store.select(isLoadingSelector);
-    this.articles$ = this._store.select(articlesSelector).pipe(map(res => res.slice(0,4)));
-    this.articlesForList$ = this._store.select(articlesSelector);
+    this.articles$ = this._store.select(articlesSelector).pipe(map(articels => articels.filter(article => article.author).slice(0,4)));
+    this.articlesForList$ = this._store.select(articlesSelector).pipe(map(articels => articels.filter(article => article.author)));
   }
 
   public ngOnInit(): void {
