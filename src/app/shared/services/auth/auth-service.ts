@@ -22,14 +22,17 @@ export class AuthService {
       password: loginForm.get("password")?.value
     };
 
-    return this._http.post<IUserAuthResponse>(`${BASE_API}/api/Auth/login`, loginBody)
+    const xsrfToken = this.getCookie("XSRF-TOKEN") as string;
+    const headers = new HttpHeaders({"X-Xsrf-Token": xsrfToken});
+
+    return this._http.post<IUserAuthResponse>(`${BASE_API}/api/Auth/login`, loginBody, { headers })
       .pipe(tap((auth => {
         this.setAccessToken(auth.token);
         this.setRefreshToken(auth.refreshToken);
         localStorage.setItem("access_token", auth.token);
       })),catchError(err => {
         const errMessage = err.error.errors ? err.error.errors.Email[0] : err.error.errorMessage;
-        this._notificationService.showNotificationBox(NotificationTypes.DANGER, errMessage);
+        this._notificationService.showNotificationBox(NotificationTypes.DANGER, errMessage ? errMessage : "Login error");
         return EMPTY;
       }));
   }
@@ -115,3 +118,24 @@ export class AuthService {
     this._cookieService.delete('refresh_Token');
   }
 }
+
+
+ // var antiforgery = app.Services.GetRequiredService<IAntiforgery>();
+
+   // app.Use((context, next) =>
+   // {
+    //    var requestPath = context.Request.Path.Value;
+     //   var tokenSet = antiforgery.GetAndStoreTokens(context);
+
+//        if (string.Equals(requestPath, "/Ping", StringComparison.OrdinalIgnoreCase))
+     //   {
+  //          context.Response.Cookies.Append("XSRF-TOKEN", tokenSet.RequestToken!, new CookieOptions
+    //             {
+      //               HttpOnly = false,
+        //             Path = "/",
+          //       }
+           //    );
+        //}
+
+//        return next(context);
+ //   });
