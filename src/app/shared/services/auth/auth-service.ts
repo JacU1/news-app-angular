@@ -118,24 +118,3 @@ export class AuthService {
     this._cookieService.delete('refresh_Token');
   }
 }
-
-
- // var antiforgery = app.Services.GetRequiredService<IAntiforgery>();
-
-   // app.Use((context, next) =>
-   // {
-    //    var requestPath = context.Request.Path.Value;
-     //   var tokenSet = antiforgery.GetAndStoreTokens(context);
-
-//        if (string.Equals(requestPath, "/Ping", StringComparison.OrdinalIgnoreCase))
-     //   {
-  //          context.Response.Cookies.Append("XSRF-TOKEN", tokenSet.RequestToken!, new CookieOptions
-    //             {
-      //               HttpOnly = false,
-        //             Path = "/",
-          //       }
-           //    );
-        //}
-
-//        return next(context);
- //   });
