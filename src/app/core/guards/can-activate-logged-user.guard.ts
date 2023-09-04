@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanLoad, Route, Router, UrlSegment } from '@angular/router';
+import { Route, Router, UrlSegment } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable, catchError, map, of, switchMap, throwError } from 'rxjs';
 import { AuthService } from 'src/app/shared/services/auth/auth-service';
@@ -7,7 +7,7 @@ import { NotificationBoxService } from 'src/app/shared/services/notification-box
 import { NotificationTypes } from '../models/notification-box.interface';
 
 @Injectable()
-export class CanLoadLoggedUserGuard implements CanLoad {
+export class CanLoadLoggedUserGuard  {
   constructor(private readonly _jwtHelper: JwtHelperService,
               private readonly _authService: AuthService,
               private readonly _router: Router){ }
