@@ -16,7 +16,7 @@ export class AuthService {
               private readonly _router: Router,
               private readonly _cookieService: CookieService) {}
 
-  public loginUser(loginForm: FormGroup): Observable<IUserAuthResponse> {
+  public loginUser(loginForm: FormGroup): Observable<IUserAuthResponse> {     // każde zapytanie musi być switchMapem żeby pierw wysłać zapytanie po token i potem ten token leci w interpreceptorze
     const loginBody = {
       email: loginForm.get("loginName")?.value,
       password: loginForm.get("password")?.value

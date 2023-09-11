@@ -6,6 +6,7 @@ import { NotificationTypes } from 'src/app/core/models/notification-box.interfac
 import { BasePage } from 'src/app/shared/classes/BasePage';
 import { CustomFormValidators } from 'src/app/shared/classes/custom-form-validators';
 import { AuthService } from 'src/app/shared/services/auth/auth-service';
+import { CsrfService } from 'src/app/shared/services/csrf/csrf.service';
 import { NotificationBoxService } from 'src/app/shared/services/notification-box/notification-box.service';
 
 @Component({
@@ -28,9 +29,10 @@ export class SignUpComponent extends BasePage implements OnInit {
   constructor(private readonly _fb: FormBuilder,
               private readonly _authService: AuthService,
               private readonly _notificationBox: NotificationBoxService,
-              private readonly _router: Router) 
+              private readonly _router: Router,
+              override readonly _csrf: CsrfService) 
     {
-    super();
+    super(_csrf);
 
     this.formGroup = this._fb.group({
       firstName: new FormControl<string | null>('', [Validators.required]),
@@ -50,7 +52,7 @@ export class SignUpComponent extends BasePage implements OnInit {
     });
   }
 
-  ngOnInit(): void {
+  override ngOnInit(): void {
     console.log(this.formGroup); 
   }
 

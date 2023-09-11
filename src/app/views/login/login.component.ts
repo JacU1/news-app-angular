@@ -6,6 +6,7 @@ import { AuthService } from 'src/app/shared/services/auth/auth-service';
 import { NotificationBoxService } from 'src/app/shared/services/notification-box/notification-box.service';
 import { NotificationTypes } from 'src/app/core/models/notification-box.interface';
 import { BasePage } from 'src/app/shared/classes/BasePage';
+import { CsrfService } from 'src/app/shared/services/csrf/csrf.service';
 
 @Component({
   selector: 'app-login',
@@ -25,9 +26,10 @@ export class LoginComponent extends BasePage {
   constructor(private readonly fb: FormBuilder,
     private readonly _notificationService: NotificationBoxService,
     private readonly _router: Router, 
-    private readonly _authService: AuthService) 
+    private readonly _authService: AuthService,
+    override readonly _csrf: CsrfService) 
     {
-      super();
+      super(_csrf);
     }
 
   public onLoginClick(): void {
