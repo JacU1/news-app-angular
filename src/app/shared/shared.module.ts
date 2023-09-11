@@ -9,6 +9,9 @@ import { LoadingSpinnerService } from './services/loading-spinner/loading-spinne
 import { AuthService } from './services/auth/auth-service';
 import { NotificationBoxComponent } from './components/notification-box/notification-box.component';
 import { MovingBannersComponent } from './components/moving-banners/moving-banners.component';
+import { CsrfInterceptor } from './interceptors/csrf.interceptor';
+import { CsrfService } from './services/csrf/csrf.service';
+
 @NgModule({
   declarations: [
     LoadingSpinnerComponent,
@@ -17,11 +20,17 @@ import { MovingBannersComponent } from './components/moving-banners/moving-banne
   ],
   imports: [MatProgressSpinnerModule, CommonModule],
   exports: [LoadingSpinnerComponent, NotificationBoxComponent,MovingBannersComponent],
-  providers: [NewsApiService, LoadingSpinnerService, AuthService,
+  providers: [NewsApiService, LoadingSpinnerService, AuthService, CsrfService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LoadingSpinnerInterceptor,
       multi: true,
-   }]
+   },
+   {
+    provide: HTTP_INTERCEPTORS,
+    useClass: CsrfInterceptor,
+    multi: true,
+   }
+  ]
 })
 export class SharedModule { }
