@@ -22,10 +22,7 @@ export class AuthService {
       password: loginForm.get("password")?.value
     };
 
-    const xsrfToken = this.getCookie("XSRF-TOKEN") as string;
-    const headers = new HttpHeaders({"X-Xsrf-Token": xsrfToken});
-
-    return this._http.post<IUserAuthResponse>(`${BASE_API}/api/Auth/login`, loginBody, { headers })
+    return this._http.post<IUserAuthResponse>(`${BASE_API}/api/Auth/login`, loginBody)
       .pipe(tap((auth => {
         this.setAccessToken(auth.token);
         this.setRefreshToken(auth.refreshToken);
