@@ -6,6 +6,8 @@ import { Store } from '@ngrx/store';
 import * as homeActions from '../../core/store/actions/news.action';
 import { articlesSelector, isLoadingSelector, selectNewsFeature } from 'src/app/core/store';
 import { AppStateInterface } from 'src/app/core/models/appState.interface';
+import { AuthService } from 'src/app/shared/services/auth/auth-service';
+import { CsrfService } from 'src/app/shared/services/csrf/csrf.service';
 
 @Component({
   selector: 'app-home',
@@ -21,7 +23,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   public articles$: Observable<IArticle[]>;
   public articlesForList$: Observable<IArticle[]>;
 
-  constructor(private readonly _store: Store<AppStateInterface>) {
+  constructor(private readonly _store: Store<AppStateInterface>,
+    private readonly csrf: CsrfService) {
     this.isLoading$ = this._store.select(isLoadingSelector);
     this.articles$ = this._store.select(articlesSelector).pipe(map(articels => articels.filter(article => article.author).slice(0,4)));
     this.articlesForList$ = this._store.select(articlesSelector).pipe(map(articels => articels.filter(article => article.author)));
@@ -29,6 +32,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     this._store.dispatch(homeActions.LOAD_NEWS());
+    this.csrf.testCsrf().subscribe(res => console.log(res + "csrf working"));
   }
 
   public ngOnDestroy(): void {
