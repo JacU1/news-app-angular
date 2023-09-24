@@ -12,26 +12,15 @@ export class CsrfService {
   constructor(private readonly _http: HttpClient, private readonly _auth: AuthService) { }
 
   public GetandSetToken() {
-    const headername = 'X-XSRF-TOKEN';
-    const requestToken = this._auth.getCookie("XSRF-COOKIE"); 
-
-    const headers = new HttpHeaders().append(headername, requestToken)
-                                        .append('Cache-Control', 'no-cache')
-                                        .append('Pragma', 'no-cache')
-
+    const headers = this._auth.csrfTokenRequestHandler();
     return this._http.post(`${BASE_API}/api/Ping/Startupcall`, null, {withCredentials: true, headers}).pipe(
       switchMap(_ => this._http.get(`${BASE_API}/api/Ping/antiforgerytoken`, {withCredentials: true, headers}))
     );
   }
 
   public testCsrf() {
-    const headername = 'X-XSRF-TOKEN';
-    const requestToken = this._auth.getCookie("XSRF-COOKIE"); 
-
-    const headers = new HttpHeaders().append(headername, requestToken)
-                                        .append('Cache-Control', 'no-cache')
-                                        .append('Pragma', 'no-cache')
-
+    const headers = this._auth.csrfTokenRequestHandler();
+    console.log(headers);
     return this._http.post(`${BASE_API}/api/Ping/csrftest`, null ,{ withCredentials: true, headers });
   }
 }
