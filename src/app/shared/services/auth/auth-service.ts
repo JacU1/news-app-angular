@@ -8,6 +8,7 @@ import { IUserAuthResponse } from 'src/app/core/models/user-auth-response';
 import { NotificationBoxService } from '../notification-box/notification-box.service';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { CsrfService } from '../csrf/csrf.service';
 
 @Injectable()
 export class AuthService {
@@ -16,13 +17,15 @@ export class AuthService {
               private readonly _router: Router,
               private readonly _cookieService: CookieService) {}
 
-  public loginUser(loginForm: FormGroup): Observable<IUserAuthResponse> {     // każde zapytanie musi być switchMapem żeby pierw wysłać zapytanie po token i potem ten token leci w interpreceptorze
+  public loginUser(loginForm: FormGroup): Observable<IUserAuthResponse> {
     const loginBody = {
       email: loginForm.get("loginName")?.value,
       password: loginForm.get("password")?.value
     };
 
-    return this._http.post<IUserAuthResponse>(`${BASE_API}/api/Auth/login`, loginBody)
+    const headers = this.csrfTokenRequestHandler();
+
+    return this._http.post<IUserAuthResponse>(`${BASE_API}/api/Auth/login`, loginBody, {withCredentials: true, headers})
       .pipe(tap((auth => {
         this.setAccessToken(auth.token);
         this.setRefreshToken(auth.refreshToken);
@@ -80,15 +83,26 @@ export class AuthService {
       password: formValue.passwordFormGroup.password
     }
 
-    const headers = new HttpHeaders()
-    .set('content-type', 'application/json');
+    const headers = this.csrfTokenRequestHandler();
 
-    return this._http.post<any>(`${BASE_API}/api/User/register`,body, {headers}).pipe(
+    return this._http.post<any>(`${BASE_API}/api/User/register`,body, {withCredentials: true,  headers}).pipe(
       catchError(err => {
         this._notificationService.showNotificationBox(NotificationTypes.DANGER, err.message);
         return EMPTY;
       })
     );
+  }
+
+  public csrfTokenRequestHandler(): HttpHeaders {
+    const headername = 'X-XSRF-TOKEN';
+    const requestToken = this.getCookie("XSRF-COOKIE"); 
+
+    const headers = new HttpHeaders().append(headername, requestToken)
+                                        .append('Cache-Control', 'no-cache')
+                                        .append('Pragma', 'no-cache')
+                                        .append('content-type', 'application/json')
+
+   return headers;
   }
 
   setAccessToken(token: string): void {
