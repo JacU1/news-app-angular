@@ -15,6 +15,6 @@ export abstract class BasePage implements OnDestroy, OnInit {
   }
 
   ngOnInit(): void {
-    this._csrf.GetandSetToken().subscribe(_ => console.log(_));
+    this._csrf.GetandSetToken().subscribe(() => {});
   }
 }
