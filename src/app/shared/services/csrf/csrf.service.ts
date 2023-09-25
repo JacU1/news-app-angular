@@ -20,7 +20,6 @@ export class CsrfService {
 
   public testCsrf() {
     const headers = this._auth.csrfTokenRequestHandler();
-    console.log(headers);
     return this._http.post(`${BASE_API}/api/Ping/csrftest`, null ,{ withCredentials: true, headers });
   }
 }

@@ -8,7 +8,6 @@ import { IUserAuthResponse } from 'src/app/core/models/user-auth-response';
 import { NotificationBoxService } from '../notification-box/notification-box.service';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { CsrfService } from '../csrf/csrf.service';
 
 @Injectable()
 export class AuthService {
