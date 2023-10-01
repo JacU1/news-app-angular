@@ -1,5 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Component, Input, OnChanges, OnInit, Signal, SimpleChanges, signal } from '@angular/core';
 import { IArticle } from 'src/app/core/models/news-api-model';
 
 @Component({
@@ -13,7 +12,7 @@ export class ContentListComponent implements OnInit {
   }
 
   public listArticleItems!: IArticle[] | null;
-  public listImage: Subject<string> = new Subject<string>();
+  public listImage: Signal<string> = signal<string>('');
   
   public currentPage: number = 1;
 
