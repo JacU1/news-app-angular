@@ -6,7 +6,7 @@ import { IArticle } from 'src/app/core/models/news-api-model';
   templateUrl: './content-list.component.html',
   styleUrls: ['./content-list.component.scss']
 })
-export class ContentListComponent implements OnInit {
+export class ContentListComponent {
   @Input() set contentListArticles(value: IArticle[] | null) {
     this.listArticleItems = value;
   }
@@ -32,8 +32,4 @@ export class ContentListComponent implements OnInit {
     this.currentPage = page;
     window.scrollTo(0, 0);
   }
-
-  ngOnInit(): void {
-  }
-
 }
