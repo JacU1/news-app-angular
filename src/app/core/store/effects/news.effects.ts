@@ -7,7 +7,9 @@ import * as NewsActions from '../actions/news.action';
 
 @Injectable()
 export class NewsEffects {
-  constructor(private actions$: Actions, private readonly newsService : NewsApiService) { }
+  constructor(
+    private readonly actions$: Actions, 
+    private readonly newsService : NewsApiService) { }
 
   getArticles$ = createEffect(() => {
     return this.actions$.pipe(

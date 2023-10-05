@@ -1,19 +1,19 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { Subject } from 'rxjs';
 
 @Injectable()
 export class LoadingSpinnerService {
 
-  public isLoading$ = new Subject<boolean>();
+  public isLoading$ = signal<boolean>(false);
 
   constructor() {}
 
   public showSpinner(): void {
-    this.isLoading$.next(true);
+    this.isLoading$.set(true);
   }
 
   public hideSpinner(): void {
-    this.isLoading$.next(false);
+    this.isLoading$.set(false);
   }
 
 }

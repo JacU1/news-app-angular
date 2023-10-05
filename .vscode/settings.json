@@ -1,3 +1,5 @@
 {
-    "vscode-angular-html.colorCustomizations": true
+    "vscode-angular-html.colorCustomizations": true,
+    "vscode-angular-html.ariaAttributePrefix": "#569CD6",
+    "vscode-angular-html.ariaAttributeSuffix": "#4EC9B0"
 }
