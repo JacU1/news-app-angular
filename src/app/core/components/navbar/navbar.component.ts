@@ -16,14 +16,21 @@ export interface SearchBarDropdown {
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-  
   public searchBarData!: SearchBarDropdown[];
+  public selectedItem!: string;
+  public items: string[] = ['Apple', 'Banana', 'Cherry', 'Date', 'Grape', 'Lemon', 'Orange', 'Peach'];
+  public filteredItems: string[] = [];
   
   constructor(private readonly _authService: AuthService,
               private readonly _store: Store<AppStateInterface>) { }
 
   ngOnInit(): void {
-    this._store.select(articlesSelector).pipe(map(articles => articles.)) // dane do search dropdowna
+    this._store.select(articlesSelector) // dane do search dropdowna
+  }
+
+  onInputChange(event: any): void {
+    const inputText = event.target.value.toLowerCase();
+    this.filteredItems = this.items.filter(item => item.toLowerCase().includes(inputText));
   }
 
   logoutUser(): void {
