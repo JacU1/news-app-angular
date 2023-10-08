@@ -11,6 +11,16 @@
       <div class="collapse navbar-collapse justify-content-center w-50">
         <form class="form-inline my-2 my-lg-0 w-100">
           <input class="form-control mr-sm-2 w-100" type="search" placeholder="Search" aria-label="Search">
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="selectedItem"
+              (input)="onInputChange($event)"
+              placeholder="Wyszukaj...">
+
+            <select class="form-select" [(ngModel)]="selectedItem">
+              <option *ngFor="let item of filteredItems" [value]="item">{{ item }}</option>
+            </select>
         </form>
       </div>
 

@@ -1,3 +1,4 @@
+import { SharedModule } from 'src/app/shared/shared.module';
 import { LoginModule } from './../../../views/login/login.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -7,6 +8,7 @@ import { NavbarComponent } from "../navbar/navbar.component";
 import { LayoutRoutingModule } from "./layout-routing.module";
 import { PageNotFoundModule } from 'src/app/views/page-not-found/page-not-found.module';
 import { SignUpModule } from 'src/app/views/sign-up/sign-up.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -14,7 +16,8 @@ import { SignUpModule } from 'src/app/views/sign-up/sign-up.module';
     LayoutRoutingModule,
     LoginModule,
     PageNotFoundModule,
-    SignUpModule
+    SignUpModule,
+    FormsModule
   ],
   exports: [],
   declarations: [
