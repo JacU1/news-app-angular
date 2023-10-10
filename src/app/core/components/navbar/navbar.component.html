@@ -10,15 +10,15 @@
 
       <div class="collapse navbar-collapse justify-content-center w-50">
         <form class="form-inline my-2 my-lg-0 w-100">
-          <input class="form-control mr-sm-2 w-100" type="search" placeholder="Search" aria-label="Search">
             <input
-              type="text"
-              class="form-control"
+              class="form-control mr-sm-2 w-100" 
+              type="search" placeholder="Search" 
+              aria-label="Search"
               [(ngModel)]="selectedItem"
-              (input)="onInputChange($event)"
-              placeholder="Wyszukaj...">
-
-            <select class="form-select" [(ngModel)]="selectedItem">
+              (input)="onInputChange($event)">
+          <!-- albo piszemy samemu albo https://ng-select.github.io/ng-select#/templates -->
+          <!-- tutaj tutorial https://medium.com/@shilpasyal55/building-autocomplete-search-component-from-scratch-angular-7b012339514 -->
+            <select class="form-select mr-sm-2 w-100" [(ngModel)]="selectedItem">
               <option *ngFor="let item of filteredItems" [value]="item">{{ item }}</option>
             </select>
         </form>
