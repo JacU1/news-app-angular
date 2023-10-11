@@ -9,6 +9,7 @@ import { LayoutRoutingModule } from "./layout-routing.module";
 import { PageNotFoundModule } from 'src/app/views/page-not-found/page-not-found.module';
 import { SignUpModule } from 'src/app/views/sign-up/sign-up.module';
 import { FormsModule } from '@angular/forms';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { FormsModule } from '@angular/forms';
     LoginModule,
     PageNotFoundModule,
     SignUpModule,
-    FormsModule
+    FormsModule,
+    NgSelectModule
   ],
   exports: [],
   declarations: [
