@@ -9,16 +9,15 @@
       </div>
 
       <div class="collapse navbar-collapse justify-content-center w-50">
-        <form class="form-inline my-2 my-lg-0 w-100">
          <!--Search select-->
          <ng-select
             class="w-100"
-            [items]="cars" 
+            [items]="dropdownItems$ | async" 
             bindLabel="name" 
-            bindValue="id" 
-            [(ngModel)]="selectedCar">
+            bindValue="name"
+            (change)="onSelectClick()"
+            [(ngModel)]="selectedArticle">
          </ng-select>
-        </form>
       </div>
 
       <div class="collapse navbar-collapse justify-content-end w-25">
