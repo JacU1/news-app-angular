@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import * as homeActions from '../../../store/index';
+import { AppStateInterface } from 'src/app/core/models/appState.interface';
 
 @Component({
   selector: 'app-main-layout',
@@ -7,9 +10,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainLayoutComponent implements OnInit {
 
-  constructor() { }
+  constructor(private readonly _store: Store<AppStateInterface>) { }
 
   ngOnInit(): void {
+    this._store.dispatch(homeActions.LOAD_NEWS());
   }
-
 }

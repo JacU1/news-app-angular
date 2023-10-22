@@ -53,13 +53,16 @@ export class AuthService {
   public refreshTokenAndCheckAccess(token: string, refreshToken: string): Observable<boolean> {
     return this.refreshToken(token, refreshToken).pipe(
       map(newTokens => {
+        console.log(newTokens);
         this.setAccessToken(newTokens.token);
         this.setRefreshToken(newTokens.refreshToken);
         return true;
       }),
       catchError(error => {
+        console.log(error);
         this._notificationService.showNotificationBox(NotificationTypes.DANGER, "Error during token refreshing" + error);
-        this._router.navigate(["login"]);
+        this.removeAllCookies();
+        this._router.navigate(["/"]);
         return of(false);
       })
     );
@@ -69,6 +72,7 @@ export class AuthService {
     this._notificationService.showNotificationBox(NotificationTypes.INFO, "User logged out.");
     this.removeAccessToken();
     this.removeRefreshAccessToken();
+    this.removeAllCookies();
     this._router.navigate(["login"]);
   }
 
@@ -126,5 +130,9 @@ export class AuthService {
 
   removeRefreshAccessToken(): void {
     this._cookieService.delete('refresh_Token');
+  }
+
+  removeAllCookies(): void {
+    this._cookieService.deleteAll();
   }
 }
