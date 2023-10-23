@@ -15,6 +15,7 @@ export class NewsEffects {
     return this.actions$.pipe(
       ofType(NewsActions.LOAD_NEWS),
       mergeMap(() => {
+        console.log('effect');
         return this.newsService
           .getEverythingNews('apple')
           .pipe(map((articles) => NewsActions.LOAD_NEWS_SUCCESS({ articles })), catchError(err => {

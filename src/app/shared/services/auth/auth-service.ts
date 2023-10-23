@@ -44,6 +44,8 @@ export class AuthService {
 
     return this._http.post<IUserAuthResponse>(`${BASE_API}/api/Token/refresh`,credentials, {headers}).pipe(
       catchError(err => {
+        console.log(err);
+        this._router.navigate(["/login"]);
         this._notificationService.showNotificationBox(NotificationTypes.DANGER, "Error during token refreshing" + err.message);
         return EMPTY;
       })
@@ -54,6 +56,7 @@ export class AuthService {
     return this.refreshToken(token, refreshToken).pipe(
       map(newTokens => {
         console.log(newTokens);
+        this._cookieService.deleteAll('/app', 'localhost');
         this.setAccessToken(newTokens.token);
         this.setRefreshToken(newTokens.refreshToken);
         return true;
@@ -62,7 +65,7 @@ export class AuthService {
         console.log(error);
         this._notificationService.showNotificationBox(NotificationTypes.DANGER, "Error during token refreshing" + error);
         this.removeAllCookies();
-        this._router.navigate(["/"]);
+        this._router.navigate(["/login"]);
         return of(false);
       })
     );
@@ -70,8 +73,6 @@ export class AuthService {
 
   public logoutUser() : void {
     this._notificationService.showNotificationBox(NotificationTypes.INFO, "User logged out.");
-    this.removeAccessToken();
-    this.removeRefreshAccessToken();
     this.removeAllCookies();
     this._router.navigate(["login"]);
   }
@@ -133,6 +134,6 @@ export class AuthService {
   }
 
   removeAllCookies(): void {
-    this._cookieService.deleteAll();
+    this._cookieService.deleteAll('/', 'localhost');
   }
 }

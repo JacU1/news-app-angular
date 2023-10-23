@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/shared/services/auth/auth-service';
 import { AppStateInterface } from '../../models/appState.interface';
 import { articlesSelector } from '../../store';
 import { Observable, map, of } from 'rxjs';
+import { Router } from '@angular/router';
 
 export interface SearchBarDropdown {
   id: number,
@@ -20,7 +21,8 @@ export class NavbarComponent implements OnInit {
   public dropdownItems$!: Observable<SearchBarDropdown[]>;
   
   constructor(private readonly _authService: AuthService,
-              private readonly _store: Store<AppStateInterface>) { }
+              private readonly _store: Store<AppStateInterface>,
+              private readonly _router: Router) { }
 
   ngOnInit(): void {
     this.dropdownItems$ = this._store.select(articlesSelector).pipe(map(articles => {
@@ -35,7 +37,6 @@ export class NavbarComponent implements OnInit {
 
       return dropdownItems
     }));
-    console.log(this.selectedArticle);
   }
 
   logoutUser(): void {
@@ -43,7 +44,7 @@ export class NavbarComponent implements OnInit {
   }
 
   public onSelectClick(){
-    console.log(this.selectedArticle.trim());
+    this._router.navigate(['app','articles', this.selectedArticle])
   }
 
 }
