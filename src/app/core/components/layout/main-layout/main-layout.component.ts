@@ -10,9 +10,9 @@ import { AppStateInterface } from 'src/app/core/models/appState.interface';
 })
 export class MainLayoutComponent implements OnInit {
 
-  constructor(private readonly _store: Store<AppStateInterface>) { }
-
-  ngOnInit(): void {
+  constructor(private readonly _store: Store<AppStateInterface>) {
     this._store.dispatch(homeActions.LOAD_NEWS());
-  }
+   }
+
+  ngOnInit(): void {}
 }

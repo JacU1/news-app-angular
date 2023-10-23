@@ -7,6 +7,8 @@ import { NotificationBoxService } from 'src/app/shared/services/notification-box
 import { NotificationTypes } from 'src/app/core/models/notification-box.interface';
 import { BasePage } from 'src/app/shared/classes/BasePage';
 import { CsrfService } from 'src/app/shared/services/csrf/csrf.service';
+import { AppStateInterface } from 'src/app/core/models/appState.interface';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-login',
@@ -27,7 +29,7 @@ export class LoginComponent extends BasePage {
     private readonly _notificationService: NotificationBoxService,
     private readonly _router: Router, 
     private readonly _authService: AuthService,
-    override readonly _csrf: CsrfService) 
+    override readonly _csrf: CsrfService)
     {
       super(_csrf);
     }

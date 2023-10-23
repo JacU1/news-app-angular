@@ -10,6 +10,10 @@ import { PageNotFoundModule } from 'src/app/views/page-not-found/page-not-found.
 import { SignUpModule } from 'src/app/views/sign-up/sign-up.module';
 import { FormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+import { newsReducers } from '../../store';
+import { NewsEffects } from '../../store/effects/news.effects';
 
 @NgModule({
   imports: [
@@ -19,13 +23,15 @@ import { NgSelectModule } from '@ng-select/ng-select';
     PageNotFoundModule,
     SignUpModule,
     FormsModule,
-    NgSelectModule
+    NgSelectModule,
+    StoreModule.forFeature('homePage', newsReducers),
+    EffectsModule.forFeature([NewsEffects])
   ],
   exports: [],
   declarations: [
     MainLayoutComponent,
     FooterComponent,
-    NavbarComponent,
+    NavbarComponent
   ]
 })
 export class LayoutModule { }

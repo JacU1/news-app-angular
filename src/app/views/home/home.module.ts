@@ -26,9 +26,7 @@ import { ContentListComponent } from './components/dumb_components/content-list/
     HomeRoutingModule,
     CarouselModule,
     SharedModule,
-    CoreModule,
-    StoreModule.forFeature('homePage', newsReducers),
-    EffectsModule.forFeature([NewsEffects])
+    CoreModule
   ],
   exports: [],
   providers: [NewsApiService],
